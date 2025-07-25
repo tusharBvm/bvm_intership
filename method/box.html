@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="box.css">
+</head>
+<!-- Take two buttons (+,-);
+Show the boxes using the different color.
+And increase the box by click + button
+And decrease the box by click - button
+Every box should be different color.
+NOTE:- duplicate color not allowed -->
+
+<body>
+    <div class="box" id="box"></div><br><br>
+    <button id="increment" onclick="plus()">+ + +</button>
+    <button id="decrement" onclick="minus()">- - -</button>
+    
+    <script>
+        let count = 0
+        function plus() {
+            document.getElementById('box').textContent = count++
+            document.getElementById('box').style.backgroundColor = "blue"
+          
+        }
+
+         function minus() {
+            document.getElementById('box').textContent = count--
+            document.getElementById('box').style.backgroundColor = "green"
+
+        }
+    </script>
+</body>
+
+</html>

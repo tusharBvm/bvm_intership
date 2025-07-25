@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Simple CRUD Form</h3>
+    <form id="form">
+        Name: <input type="text" id="name"><br><br>
+        Password: <input type="password" id="password"><br><br>
+
+        Gender:
+        <label><input type="radio" name="gender" value="Male"> Male</label>
+        <label><input type="radio" name="gender" value="Female"> Female</label><br><br>
+
+        Hobbies:
+        <label><input type="checkbox" name="hobby" value="Reading"> Reading</label>
+        <label><input type="checkbox" name="hobby" value="Gaming"> Gaming</label><br><br>
+
+        Country:
+        <select id="country">
+            <option value="India">India</option>
+            <option value="USA">USA</option>
+        </select><br><br>
+
+        <button type="submit">Add</button>
+
+    </form>
+
+    <h3>Entries:</h3>
+    <table border="1" id="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Gender</th>
+                <th>Hobbies</th>
+                <th>Country</th>
+                <th>Delete</th>
+            </tr>
+        </thead>
+        <tbody id="tableBody">
+            <!-- rows will be added here -->
+        </tbody>
+    </table>
+
+    <script>
+        let form = document.getElementById('form')
+        // let list = document.getElementById('list')
+        let entries = [];
+
+        form.addEventListener('submit', function (e) {
+            // console.log("demo");
+            e.preventDefault()
+
+            let name = document.getElementById('name').value
+            // console.log("name==>",name);
+
+            let password = document.getElementById('password').value
+            // console.log("password==>",password);
+
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+            // console.log("gender==>",gender);
+
+            let hobbies = Array.from(document.querySelectorAll('input[name=hobby]:checked')).map(cb => cb.value)
+            // console.log("hobbies==>",hobbies);
+
+            let country = document.getElementById("country").value;
+            // console.log("country==>", country);
+
+            let entry = { name, password, gender, hobbies, country }
+            // console.log("entry==>",entry);   
+
+            entries.push(entry)
+            form.reset()
+            renderTable();
+
+        })
+
+        function renderTable() {
+            tableBody.innerHTML = ""
+            entries.forEach((entry, index) => {
+                let row = document.createElement('tr');
+                row.innerHTML = `
+             <td>${index + 1}</td>
+             <td>${entry.name}</td>
+             <td>${entry.password}</td>
+             <td>${entry.gender}</td>
+             <td>${entry.hobbies.join(',')}</td>
+             <td>${entry.country}</td>
+             <td> <button onclick="deleteEntry(${index})">Delete</button></td>
+             `;
+                tableBody.appendChild(row);
+
+            })
+        }
+
+        function deleteEntry(index) {
+            entries.splice(index, 1)
+            renderTable();
+
+        }
+
+
+
+
+    </script>
+
+
+
+</body>
+
+</html>

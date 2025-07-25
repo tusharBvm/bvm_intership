@@ -1,0 +1,60 @@
+
+
+.main{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #183D3D;
+    /* background-image: url('https://png.pngtree.com/thumb_back/fh260/background/20240601/pngtree-nice-picsart-cb-backgrounds-hd-phone-wallpaper-image_15846248.jpg'); */
+    /* background-repeat: no-repeat; */
+    /* background-size: 100%; */
+    /* opacity: 0.5; */
+    
+}
+
+.form-container{
+    width: 400px;
+    background-color: #5C8374;
+    /* background-color: white; */
+    padding: 20px;
+    border-radius: 15px;
+}
+
+.submit{
+    padding-left: 100px;
+    padding-right: 100px;
+    padding-top: 6px;
+    padding-bottom: 6px;
+    border-radius: 10px;
+    overflow: hidden;
+    background-color: #183D3D;
+    color: white;
+}
+
+.img-cnt{
+    /* height: 300px; */
+    padding: 15px;
+    object-fit: cover;
+}
+
+.img-cnt img{
+    /* width: 200px; */
+    height: 300px;
+    object-fit: cover;
+}
+
+.btn-grp{
+    display: flex;
+    justify-content: space-between;
+}
+.search{
+    display: flex;
+    justify-content: center;
+}
+.select-section{
+    display: flex;
+    gap: 30px;
+    justify-content: center;
+    margin-top: 5px;
+}

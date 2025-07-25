@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="multifield.css">
+    <!-- fnam,lname,gender,image,age,country,language -->
+</head>
+
+<body onload="checkCookie()">
+    <div class="main">
+        <form id="form">
+            <div class="form-container">
+                <div>
+                    <h2 class="text-center mb-3">Input Form</h2>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">First name</label>
+                    <input type="text" class="form-control" placeholder="Please Enter First Name" id="firstname">
+                    <span id="error" style="color:red;display: none;">Please Enter First Name</span>
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Please Enter Last Name" id="lastname">
+                    <span id="error2" style="color:red;display: none;">Please Enter Last Name</span>
+
+                </div>
+
+                <div class="col-md-12 mt-2">
+                    <span>
+                        Language
+                    </span><br>
+                    <label>
+                        <input class="form-check-input" type="checkbox" name="language" value="Gujrati">Gujrati
+                    </label>
+                    <label>
+                        <input class="form-check-input" type="checkbox" name="language" value="Hindi">Hindi
+                    </label>
+                    <label>
+                        <input class="form-check-input" type="checkbox" name="language" value="English">English
+                    </label>
+                    <span id="error3" style="color:red;display:none;">Please Select Language</span>
+
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label class="form-check-label" for="flexCheckDefault">
+                        Gender
+                    </label><br>
+                    <input type="radio" name="gender" value="Male">Male
+                    <input type="radio" name="gender" value="Female">Female
+                    <span id="error4" style="color:red;display:none;">Please Select Gender</span>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label class="form-label">Age</label>
+                    <input type="number" class="form-control" placeholder="Please Enter Age" id="age" min="1" max="100">
+                    <span id="error5" style="color:red;display:none;">Please Select Age</span>
+
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label">Country</label>
+                    <select class="form-select" aria-label="Default select example" id="country">
+                        <option value="">Select Country</option>
+                        <option name="country" value="India">India</option>
+                        <option name="country" value="Newzeland">Newzeland</option>
+                        <option name="country" value="Africa">Africa</option>
+                    </select>
+                    <span id="error6" style="color:red;display:none;">Please Select Country</span>
+
+                </div>
+                <div class="col-md-12">
+                    <label class="form-label mb-2 mt-2">Image</label><br>
+                    <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                    <img id="previewImage" alt="Preview"
+                        style="max-width: 150px; max-height: 150px; display: none;margin-top: 10px;">
+                    <span id="error7" style="color:red;display:none;">Please Select Image</span>
+
+                </div>
+                <div class="col-md-12 text-center mt-5">
+                    <input type="submit" class="submit">
+                </div>
+                <!--             
+              <div  class="col-md-12 text-center mt-5">
+                <button class="submit" onclick="submitHandler()">Submitt</button>
+              </div> -->
+            </div>
+
+        </form>
+    </div>
+    <br>
+    <br>
+    <div class="search">
+        <div class="col-md-4">
+            <label class="form-label fs-3">Search Here</label>
+            <input type="text" class="form-control" placeholder="Search Here" id="search">
+        </div>
+    </div>
+
+    <div class="select-section">
+        <div class="col-md-2">
+            <label class="form-label">Country</label>
+            <select class="form-select" aria-label="Default select example" id="countryFind">
+                <option value="">Select Country</option>
+                <option name="country" value="India">India</option>
+                <option name="country" value="Newzeland">Newzeland</option>
+                <option name="country" value="Africa">Africa</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Language</label>
+            <select class="form-select" aria-label="Default select example" id="languageFind">
+                <option value="">Select Language</option>
+                <option name="language" value="Gujrati">Gujrati</option>
+                <option name="language" value="Hindi">Hindi</option>
+                <option name="language" value="English">English</option>
+            </select>
+        </div>
+        <div class="col-md-2">
+            <label class="form-label">Gender</label>
+            <select class="form-select" aria-label="Default select example" id="genderFind">
+                <option value="">Select Gender</option>
+                <option name="gender" value="Male">Male</option>
+                <option name="gender" value="Female">Female</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="card-cnt">
+            <div class="row mb-5 " id="card-container">
+
+            </div>
+        </div>
+    </div>
+
+    </div>
+    <script>
+        let form = document.getElementById('form')
+        // let list = []
+
+        let list = JSON.parse(localStorage.getItem('listStorage')) || []
+        // console.log("getStrogeDa==>", list);
+
+        window.addEventListener("DOMContentLoaded", function () {
+            getData()
+        })
+
+        let editingIndex = null
+
+        document.getElementById('image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('previewImage');
+
+            if (file) {
+                const url = URL.createObjectURL(file);
+                preview.src = url;
+                preview.style.display = 'block';
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        });
+
+        const ageField = document.getElementById('age')
+        ageField.addEventListener('input', function () {
+            let value = parseInt(this.value)
+
+            if (isNaN(value)) {
+                this.value = ''
+            } else if (value < 1) {
+                this.value = 1
+            } else if (value > 100) {
+                this.value = 100;
+            }
+        })
+
+        // function submitHandler() {
+        //     event.preventDefault()
+        //      let firstname = document.getElementById('firstname').value
+        //     // console.log("firstname==>",firstname);
+
+        //     if (!firstname) {
+        //         document.getElementById('error').style.display = "block"
+        //     }else{
+        //         document.getElementById('error').style.display = "none"
+        //     }
+
+        //     let lastname = document.getElementById('lastname').value
+        //     // console.log("lastname==>",lastname);
+
+        //     if (!lastname) {
+        //         document.getElementById('error2').style.display = "block"
+        //     }else{
+        //         document.getElementById('error2').style.display = "none"
+        //     }
+
+        //     let language = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value)
+        //     // console.log("language==>",language);
+
+        //     if (language.length == 0) {
+        //         // console.log("languge length==>",language.length);
+        //         document.getElementById('error3').style.display = "block"
+        //     }else{
+        //         document.getElementById('error3').style.display = "none"
+        //     }
+
+        //     let gender = document.querySelector('input[name="gender"]:checked')?.value || ""
+        //     // console.log("gender==>",gender);
+
+        //     if (!gender) {
+        //         document.getElementById('error4').style.display = "block"
+        //     }else{
+        //         document.getElementById('error4').style.display = "none"
+        //     }
+
+        //     let age = document.getElementById('age').value
+        //     // console.log("age==>",age);
+
+        //      if (!age) {
+        //         document.getElementById('error5').style.display = "block"
+        //     }else{
+        //         document.getElementById('error5').style.display = "none"
+        //     }
+
+
+        //     let country = document.getElementById('country').value
+        //     // console.log("country==>",country);
+
+        //       if (!country) {
+        //         document.getElementById('error6').style.display = "block"
+        //     }else{
+        //         document.getElementById('error6').style.display = "none"
+        //     }
+
+        //     let imageInput = document.getElementById('image').files[0];
+        //     // console.log("imageInput==>",imageInput);
+
+
+        //       if (!imageInput) {
+        //         document.getElementById('error7').style.display = "block"
+        //     }else{
+        //         document.getElementById('error7').style.display = "none"
+        //     }
+
+        //     let image;
+
+        //         if (imageInput) {
+        //         image = URL.createObjectURL(imageInput);
+        //         // console.log("image==>",image);
+        //     } else {
+        //         image = "";
+        //     }
+
+        //     let entry = {firstname,lastname,language,gender,age,country,image}
+
+        //     if (editingIndex == null) {
+        //          if (firstname !== "" && lastname !== "" && language !== "" && gender !== "" && age !== "" && country !== "" && image !== "") {
+        //              list.push(entry)
+        //             localStorage.setItem('listStorage',JSON.stringify(list))
+        //               getData()
+        //             form.reset()
+        //     }
+        //     } else {
+        //         if (firstname !== "" && lastname !== "" && language !== "" && gender !== "" && age !== "" && country !== "" && image !== ""){
+        //         list[editingIndex] = entry
+        //        editingIndex = null
+        //        getData() 
+        //        form.reset()
+        //         }
+        //     }
+
+        //     const preview = document.getElementById('previewImage');
+        //     preview.style.display = 'none';
+
+        //     // storageDtaa = JSON.parse(localStorage.getItem('list-storage'))
+        //     // console.log("straggedata=>",storageDtaa);
+
+        // }
+
+
+        form.addEventListener('submit', function (e) {
+
+
+            e.preventDefault()
+
+            let firstname = document.getElementById('firstname').value
+            // console.log("firstname==>",firstname);
+
+            if (!firstname) {
+                document.getElementById('error').style.display = "block"
+            } else {
+                document.getElementById('error').style.display = "none"
+            }
+
+            let lastname = document.getElementById('lastname').value
+            // console.log("lastname==>",lastname);
+
+            if (!lastname) {
+                document.getElementById('error2').style.display = "block"
+            } else {
+                document.getElementById('error2').style.display = "none"
+            }
+
+            let language = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value)
+            // console.log("language==>",language);
+
+            if (language.length == 0) {
+                // console.log("languge length==>",language.length);
+                document.getElementById('error3').style.display = "block"
+            } else {
+                document.getElementById('error3').style.display = "none"
+            }
+
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || ""
+            // console.log("gender==>",gender);
+
+            if (!gender) {
+                document.getElementById('error4').style.display = "block"
+            } else {
+                document.getElementById('error4').style.display = "none"
+            }
+
+            let age = document.getElementById('age').value
+            // console.log("age==>",age);
+
+            if (!age) {
+                document.getElementById('error5').style.display = "block"
+            } else {
+                document.getElementById('error5').style.display = "none"
+            }
+
+
+            let country = document.getElementById('country').value
+            // console.log("country==>",country);
+
+            if (!country) {
+                document.getElementById('error6').style.display = "block"
+            } else {
+                document.getElementById('error6').style.display = "none"
+            }
+
+            let imageInput = document.getElementById('image').files[0];
+            // console.log("imageInput==>",imageInput);
+
+
+            if (!imageInput) {
+                document.getElementById('error7').style.display = "block"
+            } else {
+                document.getElementById('error7').style.display = "none"
+            }
+
+            let image;
+
+            if (imageInput) {
+                image = URL.createObjectURL(imageInput);
+                // console.log("image==>",image);
+            } else {
+                image = "";
+            }
+
+            let entry = { firstname, lastname, language, gender, age, country, image }
+
+            if (editingIndex == null) {
+                if (firstname !== "" && lastname !== "" && language !== "" && gender !== "" && age !== "" && country !== "" && image !== "") {
+                    list.push(entry)
+                    // getData()
+                    form.reset()
+                }
+            } else {
+                if (firstname !== "" && lastname !== "" && language !== "" && gender !== "" && age !== "" && country !== "" && image !== "") {
+                    list[editingIndex] = entry
+                    editingIndex = null
+                    //    getData() 
+                    form.reset()
+                }
+            }
+
+            const preview = document.getElementById('previewImage');
+            preview.style.display = 'none';
+
+            localStorage.setItem('listStorage', JSON.stringify(list))
+            // let getStrogeData = JSON.parse(localStorage.getItem('listStorage'))
+            // console.log("getStrogeDa==>",getStrogeData);
+
+            getData()
+
+        })
+
+        function getData(filterData) {
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';
+
+            list.forEach((el, index) => {
+                container.innerHTML += `
+                 <div class="col-sm-4 mt-4 ">
+                        <div class="card">
+                            <div class="img-cnt">
+                                 <img src="${el.image}" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">firstname :- ${el.firstname}</h5>
+                                <h5 class="card-title">lastname :- ${el.lastname}</h5>
+                                <h5 class="card-title">Language :- ${el.language}</h5>
+                                <h5 class="card-title">Gender :- ${el.gender}</h5>
+                                <h5 class="card-title">Age :- ${el.age}</h5>
+                                <h5 class="card-title">Country :- ${el.country}</h5>
+                                <div class="btn-grp">
+                                     <div>
+                                    <button type="button" class="btn btn-primary" onclick="DeleteHandler(${index})">Delete</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" onclick="UpdateHandler(${index})">Update</button>
+                                </div>
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                `
+            })
+        }
+
+        function search(filterData) {
+            // console.log("filerData",filterData);
+
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';
+
+            filterData.forEach((el, index) => {
+                container.innerHTML += `
+                 <div class="col-sm-4 mt-4 ">
+                        <div class="card">
+                            <div class="img-cnt">
+                                 <img src="${el.image}" class="card-img-top" alt="...">
+                            </div>
+                            <div class="card-body">
+                                <h5 class="card-title">firstname :- ${el.firstname}</h5>
+                                <h5 class="card-title">lastname :- ${el.lastname}</h5>
+                                <h5 class="card-title">Language :- ${el.language}</h5>
+                                <h5 class="card-title">Gender :- ${el.gender}</h5>
+                                <h5 class="card-title">Age :- ${el.age}</h5>
+                                <h5 class="card-title">Country :- ${el.country}</h5>
+                                <div class="btn-grp">
+                                     <div>
+                                    <button type="button" class="btn btn-primary" onclick="DeleteHandler(${index})">Delete</button>
+                                </div>
+                                <div>
+                                    <button type="button" class="btn btn-primary" onclick="UpdateHandler(${index})">Update</button>
+                                </div>
+                                </div>
+                                
+                            </div>
+                           
+                        </div>
+                    </div>
+                `
+            })
+        }
+
+        function DeleteHandler(index) {
+            console.log("index==>", index);
+            list.splice(index, 1)
+            localStorage.setItem('listStorage', JSON.stringify(list))
+            getData()
+        }
+
+        function UpdateHandler(index) {
+            // console.log("index",index);
+
+            let entry = list[index]
+            // console.log("entry",entry);
+
+            document.getElementById('firstname').value = entry.firstname
+
+            document.getElementById('lastname').value = entry.lastname
+
+            document.querySelectorAll('input[name="language"]').forEach(el => el.checked = false)
+            entry.language.forEach(language => {
+                let checkbox = document.querySelector(`input[name="language"][value="${language}"]`)
+                if (checkbox) checkbox.checked = true
+            })
+
+            if (entry.gender) {
+                document.querySelector(`input[name="gender"][value="${entry.gender}"]`).checked = true
+            }
+
+            document.getElementById('age').value = entry.age
+
+            document.getElementById('country').value = entry.country
+            editingIndex = index;
+        }
+
+        document.getElementById('search').addEventListener('keyup', function (e) {
+            const serchData = e.target.value.toLowerCase()
+            // console.log("SearchData==>",serchData);
+
+            const filterData = list.filter((el) => {
+                // console.log("return==>",el.firstname.toLowerCase().includes(serchData))
+                return (
+                    el.firstname.toLowerCase().includes(serchData) || el.lastname.toLowerCase().includes(serchData) || el.age.toLowerCase().includes(serchData)
+                )
+            })
+            // console.log("filterData==>",filterData);
+            if (filterData) {
+                search(filterData)
+            }
+        })
+
+        document.getElementById('countryFind').addEventListener('click', function (e) {
+            const searchData = e.target.value.toLowerCase()
+            // console.log("searchData=>",searchData);
+
+            const filerData = list.filter((el) => {
+                return (
+                    el.country.toLowerCase().includes(searchData)
+                )
+            })
+            // console.log("filterData==>",filerData);
+            if (filerData) {
+                search(filerData)
+            }
+        })
+
+        document.getElementById('languageFind').addEventListener('click', function (e) {
+            let searchData = e.target.value.toLowerCase()
+            // console.log("searchData==>",searchData);
+
+            const filterData = list.filter((el) => {
+                return (
+                    el.language.join().toLowerCase().includes(searchData)
+                )
+            })
+            // console.log("filterData==>",filterData);
+            if (filterData) {
+                search(filterData)
+            }
+        })
+
+        document.getElementById('genderFind').addEventListener('click', function (e) {
+            let searchData = e.target.value.toLowerCase()
+            // console.log("searchData==>",searchData);
+
+            const filerData = list.filter((el) => {
+                return (
+                    el.gender.toLowerCase() === searchData
+                )
+            })
+            // console.log("filterData==>",filerData);
+            if (filerData) {
+                search(filerData)
+            }
+        })
+
+        //// ===========> cookies using for welcoming user one time user set don't forget by browser.user set in browwser.<<======
+
+        function setCookie(cname, cvalue, exdays) {
+            const d = new Date();
+            // d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000));
+            d.setTime(d.getTime() + (1 * 60 * 1000));
+            let expires = "expires=" + d.toUTCString();
+            document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+        }
+
+        function getCookie(cname) {
+            let name = cname + "=";
+            let decodedCookie = decodeURIComponent(document.cookie);
+            let ca = decodedCookie.split(';');
+            for (let i = 0; i < ca.length; i++) {
+                let c = ca[i];
+                while (c.charAt(0) == ' ') {
+                    c = c.substring(1);
+                }
+                if (c.indexOf(name) == 0) {
+                    return c.substring(name.length, c.length);
+                }
+            }
+            return "";
+        }
+
+        function checkCookie() {
+            let user = getCookie("username");
+            if (user != "") {
+                alert("Welcome again " + user);
+            } else {
+                user = prompt("Please enter your name:", "");
+                if (user != "" && user != null) {
+                    setCookie("username", user, 30);
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

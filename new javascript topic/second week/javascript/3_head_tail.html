@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .container {
+      display: flex;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .data {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+    }  
+</style>
+<body>
+    <!-- 
+
+
+    </div><br>
+
+    <button onclick="HeadHandler()">Head</button>
+    <button onclick="TailHandler()">Tail</button>
+
+
+    <script>
+        function HeadHandler() {
+            let span = document.createElement('span')
+            span.innerHTML = "H&nbsp;"
+            document.getElementById('container').appendChild(span)
+        }
+
+        function TailHandler() {
+            let span = document.createElement('span')
+            span.innerHTML = 'T&nbsp;'
+            document.getElementById('container').appendChild(span)
+
+        }
+    </script> -->
+
+
+    <!-- <div style="display: flex;align-items: center;">
+         <table id="table">
+    
+        </table>
+         <table id="table2">
+    
+    </table>
+    </div>
+    <br>
+
+    <button onclick="columnHandler1()">Head</button>
+    <button onclick="columnHandler2()">Tail</button>
+
+    <script>
+        function columnHandler1() {
+            var table = document.getElementById("table");
+            var row = table.insertRow(0);
+            console.log("row==>",row);
+            
+            var cell1 = row.insertCell(0);
+            cell1.innerHTML = "H";
+            console.log("cell1==>",cell1);
+        }
+
+        function columnHandler2() {
+            var table = document.getElementById("table2");
+            var row = table.insertRow(0);
+            var cell2 = row.insertCell(0);
+            cell2.innerHTML = "T";
+            console.log(cell2);
+        }
+    </script>  -->
+
+
+    <!-- <button onclick="HeadData()">Head</button>
+    <button onclick="TailData()">Tail</button>
+    <script>
+        function HeadData() {
+            const Div = document.createElement('span');
+
+            Div.className = 'column';
+
+            Div.textContent = 'H';
+
+            document.body.appendChild(Div);
+
+            const anotherColumnDiv = document.createElement('div');
+            anotherColumnDiv.className = 'column';
+            anotherColumnDiv.textContent = 'H';
+            document.body.appendChild(anotherColumnDiv);
+        }
+
+          function TailData() {
+            const Div = document.createElement('span');
+
+            Div.className = 'column';
+
+            Div.textContent = 'T';
+
+            document.body.appendChild(Div);
+
+            const anotherColumnDiv = document.createElement('div');
+            anotherColumnDiv.className = 'column';
+            anotherColumnDiv.textContent = 'T';
+            document.body.appendChild(anotherColumnDiv);
+        }
+    </script> -->
+
+    <button onclick="add('H')">Head</button>
+    <button onclick="add('T')">Tail</button>
+
+    <div class="container" id="word"></div>
+
+    <script>
+        let last = ''
+        let data = []
+        function add(letter) {
+            console.log("letter ==>",letter);
+            if (letter === last) {
+                // console.log("letter length ==>",data[data.length - 1]);
+                data[data.length - 1].push(letter)
+            } else {
+                data.push([letter])
+            }
+            console.log(data);
+            last = letter
+            show()
+        }
+        function show() {
+            let word = document.getElementById('word')
+            // console.log("word ==>",word);
+            word.innerHTML = ''
+            data.map((el) => {
+                let div = document.createElement('div')
+                console.log("div ==>",div);
+                div.className = 'demo'
+                el.map(el => {
+                    div.innerHTML += `${el}<br>`
+                    // console.log("$c ===>", div.innerHTML += `${el}`);
+                })
+                word.appendChild(div);
+            })
+        }
+    </script>
+
+
+
+
+
+</body>
+
+</html>

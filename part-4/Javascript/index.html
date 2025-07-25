@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <p id="text"></p>
+
+    <span class="demo"></span><br><br>
+    <span class="demo"></span><br><br>
+
+    <h3>This is a p element.</h3>
+    <h3>This is a p element.</h3>
+
+    <h2 id="clickHere">click event check</h2>
+
+    <img src="../image/car2.webp" alt="" width="200px" height="200px" id="image">
+
+    <!-- window object example -->
+
+    <p id="encode"></p>
+
+    <button onclick="stopColor()">Stop Color</button><br><br>
+
+    <button onclick="openWindow()">Open Window</button><br><br>
+    <button onclick="closeWindow()">close Window</button><br><br>
+
+
+    <iframe src=""></iframe>
+    <iframe src=""></iframe>
+    <iframe src=""></iframe>
+
+    <p id="href"></p>
+
+    <!-- <button ondblclick="goBack()">Go Back</button> -->
+
+    <input type="button" value="Back" onclick="goBack()">
+
+
+    <input type="button" value="Forward" onclick="goForward()">
+
+    <!-- // DOM Nodes EXMAPLE -->
+
+    <div id="div1">
+        <p id="p1">This is a paragraph.</p>
+        <p id="p2">This is another paragraph.</p>
+    </div>
+
+    <button onclick="removePara()">Remove Para</button>
+
+    <div id="div2">
+        <p id="p3">this is replace Child.</p>
+        <p id="p4">This is replace child another paragraph.</p>
+    </div>
+
+
+    <h1 id="hide"> Display</h1>
+    <button onclick="hideData()">Hide</button>
+    <button onclick="showData()">Show</button>
+
+    <p id="textChange">welcome to my page</p>
+    <button onclick="changeText()">Change Text</button>
+
+
+    <script>
+        document.getElementById('text').innerHTML = "<h1>tushar</h1>"
+
+        document.getElementsByClassName('demo')[0].innerHTML = "check class1"
+        document.getElementsByClassName('demo')[1].innerHTML = "check class2"
+
+        document.querySelector('h3').style.backgroundColor = "green"
+
+        document.addEventListener('click', myClickFunction)
+
+        function myClickFunction() {
+            document.getElementById('clickHere').innerHTML = "true"
+        }
+
+        document.getElementById('image').src = "../image/car3.webp"
+
+        for (let i = 0; i < 5; i++) {
+            console.count();
+        }
+
+        // window object example 
+
+        // encode and decode
+
+        let text = "hello World"
+        let encoded = window.btoa(text)
+        let decoded = window.atob(encoded)
+
+        document.getElementById('encode').innerHTML = 'Encoded : ' + encoded + "<br>" + 'Decoded : ' + decoded
+
+        // clear interval
+
+        // let interval = setInterval(setColor,500)
+
+        // function setColor() {
+        //     let x = document.body
+        //     x.style.backgroundColor = x.style.backgroundColor == "yellow" ? "red" : "yellow"
+        // }
+
+        // function stopColor() {
+        //     clearInterval(interval)
+        // }
+
+        // window open and close
+
+        function openWindow(params) {
+            window.open()
+        }
+
+        function closeWindow(params) {
+            window.close()
+        }
+
+
+        // only for iframe length check
+        let length = window.length
+        // document.getElementById('text').innerHTML = length
+
+
+        // ==> page nu path show kare 
+        let origin = window.origin
+        document.getElementById('text').innerHTML = origin
+
+
+        // page ni url return kare 
+        let url = location.href
+        document.getElementById('href').innerHTML = url
+
+
+        // page mathi back kre
+        function goBack() {
+            console.log("demo", window.history);
+
+            window.history.back()
+        }
+
+        // not working 
+
+        // function goForward() {
+        //     console.log("check",window.history);
+
+        //     window.history.forward()
+        // }
+
+
+        // page reload kare automatic
+        // location.reload()
+
+        // url ne replace kare 
+        // location.replace('https://www.youtube.com/')
+
+
+        // DOM Nodes EXMAPLE
+
+
+        // create paragraph in write in message 
+        const para = document.createElement("p");
+        const node = document.createTextNode("This is new.");
+        para.appendChild(node);
+        const element = document.getElementById("div1");
+        element.appendChild(para);
+
+
+        // create tag in write message before insert data p1 
+        const para2 = document.createElement('h1')
+        const node2 = document.createTextNode("Welcome")
+        para2.appendChild(node2)
+        const element2 = document.getElementById('div1')
+        const child = document.getElementById('p1')
+        element2.insertBefore(para2, child)
+
+
+        function removePara() {
+            document.getElementById('p1').remove()
+        }
+
+        // remove child 
+        const parent = document.getElementById('div1')
+        const child2 = document.getElementById('p2')
+        parent.removeChild(child2)
+
+
+        //replce child
+        const para3 = document.createElement('p')
+        const node3 = document.createComment("What Can I Help You??")
+        para3.appendChild(node3)
+
+        const parent2 = document.getElementById('div2')
+        const child3 = document.getElementById('p3')
+        parent2.replaceChild(para3, child3)
+
+
+        // create positionlble elements
+        const newLayer = document.createElement('div');
+        newLayer.textContent = 'Dynamically created layer';
+        newLayer.style.position = 'absolute';
+        newLayer.style.top = '20px';
+        newLayer.style.left = '500px';
+        newLayer.style.backgroundColor = 'lightgreen';
+        document.body.appendChild(newLayer);
+
+        //Hiding and Showing Objects 
+        function hideData() {
+            document.getElementById('hide').style.display = "none"
+        }
+
+        function showData() {
+            document.getElementById('hide').style.display = "block"
+        }
+
+
+        // Modifying Text Within a Page 
+        function changeText() {
+            const paragraph = document.getElementById('textChange');
+            paragraph.textContent = 'Chaging text easily';
+        }
+
+
+        // converting Data Types
+
+        // let j = "5"
+        // let k = + j
+        // console.log("k",k);
+        // console.log(typeof(k));
+        // console.log(typeof(j));
+
+        // let x  = 10 + "5"
+        // console.log(x);
+        // concate rules 
+
+        // let y = 10 - "5"
+        // console.log(y);
+
+        // parseInt convert value in number
+        //   let intVal = parseInt("10.5");
+        //   console.log(intVal);
+
+        // parseFloat covert value in float value
+        //   let floatVal = parseFloat("3.14"); 
+        //   console.log(floatVal);
+
+        // numStr is "123" (string)
+        //  let numStr = (123).toString(); 
+        //  console.log(numStr);
+
+
+        // Using String Objects / Methods
+
+        let str = "tushar"
+        // console.log(str.charAt(3));
+        // charAt() method string ni position show kare
+
+
+        // concat methos 2 string join kare
+        let x = "my name is"
+        let y = " tushar"
+        let data = x.concat(y)
+        // console.log(data);
+
+        // last capital k word hoi to true return otherwise false 
+        let a = " hello how are you?"
+        // console.log(a.endsWith("you?"));
+
+        // fromCharCode method assci table no use kari ne value print kare
+        let ascii = String.fromCharCode(72, 69, 76, 76, 79);
+        // console.log(ascii);
+
+        let myName = String.fromCharCode(84, 85, 83, 72, 65, 82)
+        // console.log(myName);
+
+        // includes method word string ma hoi to true return otherwise false
+        let z = "Hello world, welcome to the universe.";
+        // console.log(z.includes("wo"));
+
+        // index of method index return kare ane false hoi to -1 return kare
+        // console.log(z.indexOf("Hello"));
+
+        // lastIndexOf last chartector index find kari ne ape ane proper n hoi to -1 return kare
+        // console.log(z.lastIndexOf("l"));
+
+        // string ni length count kare
+        // console.log(z.length);
+
+
+        // match method string ma find karse word jo true hoi to e no return ma array ape ane word false hoi to null value return kare
+        // console.log(z.match("Hello"));
+
+        // repeat mthod string ne repeat karava mate use 
+        // console.log(z.repeat(6));
+
+        // replace method no use strING ma change karva mate 
+        // console.log(z.replace("Hello world, welcome to the universe.","this is replace String"));
+        // console.log(z.replace("universe.","My page"));
+
+        // replace all string ma change kare  
+        let k = "I love cats. Cats are very easy to love. Cats are very popular."
+        // console.log(k.replaceAll("Cats","Dogs"));
+        // console.log(k.replaceAll("cats","dogs"));
+
+        //search method return index of first match and no match found return -1
+        // console.log(k.search("cats"));
+
+        // position no use kari ne string remove kare
+        let c = "hello world"
+        // let result = c.slice(0,5)
+        // let result = c.slice(3)
+        // console.log(result);
+
+        // string split kare ane string no array return kare 
+        // console.log(c.split(""));
+
+        // starthwith no use string first capital k word thi thay to true return kare other wise false
+        // console.log(c.startsWith("hello"));
+
+        // string ne lowwercase ma convert kare
+        let b = "HELLLO WORLD"
+        // console.log(b.toLocaleLowerCase());
+
+        //string ne uppercase ma convert kare
+        // console.log(c.toUpperCase());
+
+
+        // trim method string ma extra space remove kare  
+        // let l = "      demo check!!!!     "
+        // console.log(l.trim());
+        // console.log(l);
+
+
+        //sorting array
+        // let array = [78,54,34,10,98]
+        // let result = array.sort()
+        // console.log(result);
+
+
+        // desending sorting
+        let array = [555, 20, 30, 56, 2, 29, 99, 78]
+        // let result = array.sort((a,b)=>b-a)
+        // console.log(result);
+
+        // asseding sorting
+        // let result = array.sort((a,b)=>a-b)
+        // console.log(result);
+
+
+        // ===========>  Array Method Example  
+
+        //array ni length count kare
+        // console.log(array.length);
+
+        //array ne string ma convert kare
+        // console.log(array.toString());
+
+        //at method index par ni value return kare
+        // console.log(array.at(2));
+
+        // join method array MA ELEMENT KARVA MATE THAY
+        // console.log(array.join(" @ "));
+
+        // pop method last element remove kare
+        // console.log(array.pop());
+        // console.log(array);
+
+
+        // array ma value push kare 
+        // array.push(80,90,100)
+        // console.log(array);
+
+        // shift method array mathi first element remove kare
+        // console.log(array.shift());
+        // console.log(array);
+
+        // unshift array ma first element add kare
+        // array.unshift(999)
+        // console.log(array);
+
+        // delete method koi pan index par thi value remove karva mate thay
+        // delete array[2]
+        // console.log(array);
+
+        // concat no use 2 array merge kare
+        // let array2 = [45,50,55,60]
+        // let result = array.concat(array2)
+        // console.log(result);
+
+        // copyWithin method index par value copy kari ne biji index par set  kare che 
+        // console.log(array.copyWithin(2,0));
+        // console.log(array.copyWithin(3,0,3));
+
+        // flat method multiple array ne ek array ma convert kare che 
+        // let bigArray = [[3,4,5],[8,9],[25,30],[99,100]]
+        // console.log(bigArray.flat());
+
+        // slice method array mathi element copy kari ne new array return kare che
+        // console.log(array.slice(0,3));
+        // console.log(array.slice(5));
+
+        // splice method array mathi element delete kare
+        // console.log(array.splice(4));
+        // console.log(array.splice(0,2));
+        // console.log(array);
+
+
+        // Object Method
+
+        // assign method no use multiple object mathi similar key no use kari ne one object create karva mate 
+
+        // let obj1 = {firstName:'Tushar',lastName:'Raval'}
+        // let obj2 = {age:'23',email:'demo123@gmail.com'}
+
+        // let result =  Object.assign(obj1,obj2)
+        // console.log(result);
+
+        // let obj3 = {firstName:'Tushar',lastName:'Raval',email:"demo999@gmail.com"}
+        // let obj4 = {firstName:'dipak',lastName:'patel',password:'789056'}
+
+        //  let result2 =  Object.assign(obj3,obj4)
+        // console.log("result2==>",result2);
+
+
+        //entries method no use return array of the key/value pairs 
+        // let obj5 = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // let result = Object.entries(obj5)
+        // console.log(result);
+
+
+        // fromEntries no use multiple array mathi value ne object ma xonvert kare che
+        // const fruits = [
+        //     ["apples", 300],
+        //     ["pears", 900],
+        //     ["bananas", 500]
+        // ];
+
+        // const myObj = Object.fromEntries(fruits);
+        // console.log(myObj);
+
+
+        // values method no use return array of the values
+        // let obj6 =  { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // let check = Object.values(obj6)
+        // console.log(check);
+
+
+        // group wise array of objrect return kare use of condition
+        // const fruits = [
+        //     { name: "apples", quantity: 300 },
+        //     { name: "bananas", quantity: 500 },
+        //     { name: "oranges", quantity: 200 },
+        //     { name: "kiwi", quantity: 150 }
+        // ];
+
+        // function Group({ quantity }) {
+        //     return quantity > 200 ? "ok" : "low";
+        // }
+
+        // const result = Object.groupBy(fruits, Group);
+        // console.log(result);
+
+
+        // Using the Math Object  
+
+
+        // nearset round figer value return kare 
+        // let gg = Math.round(5.50)
+        // let g = Math.round(5.40)
+        // console.log(gg);
+        // console.log(g);
+
+        // ceil method +1 kare like  value count kare 
+        // let ff = Math.ceil(5.12)
+        // let fff = Math.ceil(5.78)
+        // console.log(ff);
+        // console.log(fff);
+
+
+        // floor method top value count kare 
+        // let rr = Math.floor(6.90)
+        // console.log(rr);
+
+        // point pela ni value count kare 
+        //  let ed = Math.trunc(4.7);
+        //  let gb = Math.trunc(-4.2);
+        //  console.log(ed);
+        //  console.log(gb);
+
+        // If x is positive it returns 1
+        // If x is negative it returns -1
+        // If x is zero, it returns 0
+        // let nn = Math.sign(-4);
+        // let mm = Math.sign(4)
+        // let vv = Math.sign(0)
+        // console.log(nn);
+        // console.log(mm);
+        // console.log(vv);
+
+        // pow method like find square of number like = 2*2*2*2*2*2 = 64
+        // let rr = Math.pow(2,6)
+        // console.log(rr);
+
+        // find sqrt 
+        // let cc = Math.sqrt(625)
+        // console.log(cc);
+
+        // negative value ne possitive ma convert kare
+        // let rr = Math.abs(-4.5);
+        // console.log(rr);
+
+        // random value return kare
+        // let zz = Math.random()
+        // console.log(zz);
+
+        // minimun value find 
+        // let ww = Math.min(78,67,34,2,-1,-3)
+        // console.log(ww);
+
+        // maximum value find kari ne ape
+        // let tt = Math.max(56,-99,99,34,68,92)
+        // console.log(tt);
+
+        // using with keyword
+        // use ==> object mathi direct value print karva 
+        // const object = {name:'tushar',age:'23',city:'Surat'}
+        //  with (object){
+        //      console.log(name);
+        //     console.log(age);
+        //     console.log(city);
+        // }
+
+        // const arrayOfObject = [
+        //     { name: 'tushar', age: '23', city: 'Surat' },
+        //     { name: 'dipak', age: '20', city: 'rajkot' },
+        //     { name: 'chirag', age: '17', city: 'tapi' },
+        // ]
+
+        // with(arrayOfObject[1]){
+        //     console.log(name);
+        //     console.log(age);
+        //     console.log(city);
+        // }
+
+
+
+        // Date Object 
+        
+        // new Date()
+        // new Date(year, month)
+        // new Date(year, month, day)
+        // new Date(year, month, day, hours)
+        // new Date(year, month, day, hours, minutes)
+        // new Date(year, month, day, hours, minutes, seconds)
+        // new Date(year, month, day, hours, minutes, seconds, ms)
+        // new Date(milliseconds)
+
+
+        // console.log(new Date());
+        // console.log(new Date(2025,6,14,4,57,40,0));
+     
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>MultiField Crud</h2>
+    <form id="form">
+        Name:-<input type="text" id="name"><br><br>
+        Password:-<input type="password" id="password"><br><br>
+
+        Gender:-
+        <label><input type="radio" name="gender" value="Male">Male</label>
+        <label><input type="radio" name="gender" value="Female">Female</label><br><br>
+
+        Hobby:-
+        <label><input type="checkbox" name="hobbies" value="Reading">Reading</label>
+        <label><input type="checkbox" name="hobbies" value="Gaming">Gaming</label><br><br>
+
+        City:-
+        <select id="city">
+            <option value="Surat">Surat</option>
+            <option value="Rajkot">Rajkot</option>
+        </select><br><br>
+
+        <button type="submit">Submit</button>
+
+    </form>
+
+    <br>
+    <br>
+    <br>
+    <table border="1" id="table">
+        <thead>
+            <tr>
+                <th>No.</th>
+                <th>Name.</th>
+                <th>Password.</th>
+                <th>Gender.</th>
+                <th>Hobby.</th>
+                <th>City.</th>
+                <th>Delete.</th>
+                <th>Edit</th>
+            </tr>
+        </thead>
+
+        <tbody id="tableBody">
+
+        </tbody>
+    </table>
+
+    <script>
+        let form = document.getElementById('form')
+        let entries = []
+        let editingIndex = null;
+
+        form.addEventListener('submit', function (e) {
+            e.preventDefault()
+            // console.log("demo");
+
+            let name = document.getElementById('name').value
+            // console.log("name ==> ",name);
+
+            let password = document.getElementById('password').value
+            // console.log("password ==> ",password);
+
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+            // console.log("gender ==> ",gender);
+
+            let hobbies = Array.from(document.querySelectorAll('input[name="hobbies"]:checked')).map(cb => cb.value)
+            // console.log("hobbies ==> ",hobbies);
+
+            let city = document.getElementById('city').value
+            // console.log("city ==> ",city)
+
+            let entry = { name, password, gender, hobbies, city }
+
+            if (editingIndex !== null) {
+                // update existing entry
+                entries[editingIndex] = entry
+                editingIndex = null
+            } else {
+                // add new entry
+                entries.push(entry)
+            }
+
+            // entries.push(entry)
+            form.reset()
+            getData()
+
+        })
+
+
+        function getData() {
+            tableBody.innerHTML = ""
+            entries.forEach((entry, index) => {
+                let row = document.createElement('tr')
+                row.innerHTML = `
+                <td>${index + 1}</td>
+                <td>${entry.name}</td>
+                <td>${entry.password}</td>
+                <td>${entry.gender}</td>
+                <td>${entry.hobbies}</td>
+                <td>${entry.city}</td>
+                <td><button onclick="DeleteHandler(${index})">Delete</button></td>
+                <td><button onclick="EditHandler(${index})">Edit</button></td>
+                `;
+                tableBody.appendChild(row)
+            })
+        }
+
+
+
+        function DeleteHandler(index) {
+            entries.splice(index, 1)
+            getData()
+        }
+
+        function EditHandler(index) {
+            // console.log("demo");
+
+            let entry = entries[index]
+            // console.log(entry);
+
+            document.getElementById('name').value = entry.name
+            document.getElementById('password').value = entry.password
+
+            if (entry.gender) {
+                document.querySelector(`input[name="gender"][value="${entry.gender}"]`).checked = true
+            }
+
+            document.querySelectorAll('input[name="hobbies"]').forEach(cb => cb.checked = false)
+            entry.hobbies.forEach(hobby => {
+                let checkbox = document.querySelector(`input[name="hobbies"][value="${hobby}"]`)
+                if (checkbox) checkbox.checked = true
+            })
+
+            document.getElementById('city').value = entry.city
+            editingIndex = index
+        }
+    </script>
+</body>
+
+</html>

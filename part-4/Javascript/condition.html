@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+
+        // if - else example
+        let a = 10
+        let b = 15
+        if (a < b) {
+            console.log("this is true ");
+
+        } else {
+            console.log("this is false");
+        }
+
+
+        if (a % 2 == 0) {
+            console.log("this is Even");
+
+        } else {
+            console.log("this is odd");
+        }
+
+        let num = 8
+        if (num > 0) {
+            console.log("this is positive");
+        } else if (num < 0) {
+            console.log("this is negative");
+        } else {
+            console.log("this is zero");
+
+        }
+
+        //Using Shorthand Conditional Expressions (Ternary Operator)
+        let k = 50
+        let j = 10
+
+        let check = (k + j == 60) ? "sum is wright" : "false"
+        console.log(check);
+
+        // testing multiple condition in if-else
+
+        let c = 15
+        let d = 10
+
+        if (c * d == 150 && c + d == 25) {
+            console.log("this is true");
+        } else {
+            console.log("this is wrong ans");
+        }
+
+        let f = 70
+        let g = 80
+
+        if (f + g == 1 || f * g == 5600) {
+            console.log("this is true");
+        } else {
+            console.log("this false");
+
+        }
+
+        // switch cases
+
+        let holiday = "Friday"
+        let message = ""
+        switch (holiday) {
+            case "Monday":
+                message = "Week of First Day"
+                break;
+            case "Tuesday":
+                message = "Week of second Day"
+                break;
+            case "WendesDay":
+                message = "Week of Third Day"
+                break;
+            case "Thrusday":
+                message = "Week of Four Day"
+                break;
+            case "Friday":
+                message = "Week of Five Day"
+                break;
+            case "Saturday":
+                message = "week of Six Day"
+                break;
+            case "Sunday":
+                message = "week of seven Day"
+                break;
+            default:
+                message = "Enjoy Your weekend"
+                break;
+        }
+        console.log(message);
+
+
+        let favouriteDish = "marwadi"
+        switch (favouriteDish) {
+            case "punjabi":
+                message = "i love this"
+                break;
+            case "gujrati":
+                message = "i like it"
+                break;
+            case "marwadi":
+                message = "i don't like it"
+                break;
+            default:
+                message = "its all good dishes"
+                break;
+        }
+        console.log(message);
+
+        // using for loop ===> best loop syntax short 
+        let fruits = ["chikoo", "banana", "pineapple", "watermelon"]
+        for (let i = 0; i < fruits.length; i++) {
+            let getFruit = fruits[i]
+            console.log(getFruit);
+        }
+
+        for (let k = 1; k <= 10; k++) {
+            console.log(k);
+        }
+
+        for (let b = 1; b <= 50; b++) {
+            if (b % 2 == 0) {
+                console.log("even num", b);
+            }
+        }
+
+
+        // using While loop ==> entry controller loop
+        let jj = 0
+        while (jj < 10) {
+            jj++
+            console.log(jj);
+        }
+
+        let odd = 0
+        while (odd < 50) {
+            if (odd % 2 == 1) {
+                console.log("odd num", odd);
+            }
+            odd++
+        }
+
+        let brand = ["dell", 'samsung', 'hp', 'iphone']
+        let l = 0
+        while (l < brand.length) {
+            let getBrand = brand[l]
+            l++
+            console.log(getBrand);
+        }
+
+
+        // ● Using do...while Loops  diffrence one condition false to pan one time output ape
+
+        let kk = 5
+        do {
+            kk++
+            console.log(kk);
+
+        } while (kk < 10);
+
+        let pp = 6
+        do {
+            pp++
+            console.log("pp=>", pp);
+
+        } while (pp > 10);
+
+
+        // Looping Through Object Properties 
+
+        let data = { 'name': 'tushar', 'age': '23', 'email': 'tushar123@gmail.com' }
+
+        for (const key in data) {
+            const element = data[key];
+            // console.log(element);
+            console.log(key);
+        }
+
+        let info = { 'firstName': 'tushar', 'lastName': 'Raval', 'age': '67' }
+
+        //entries method no use return array of the key/value pairs 
+        let result = Object.entries(info)
+        console.log("result==>",result);
+
+        let info2 = { 'contact': '8511275634', 'location': 'katargam', 'city': 'surat' }
+        let info3 = { 'work': 'develop' }
+
+        // assign method object ni property ne copy kare and target object ma add kare
+        let assign = Object.assign(info, info2, info3)
+        console.log("assign", assign);
+
+       /// The Object.create() creates an object from an existing object.
+        const person = {
+            firstName: "John",
+            lastName: "Doe"
+        };
+
+        // Create new Object
+        const man = Object.create(person);
+        man.firstName = "Peter";
+        man.lastName = "patel"
+        man.age = "34"
+        console.log("man object==>",man);
+        
+
+         // fromEntries no use multiple array mathi value ne object ma xonvert kare che // creates an object from a list of keys/values
+        const fruit = [
+            ["apples", 300],
+            ["pears", 900],
+            ["bananas", 500]
+        ];
+
+        const myObj = Object.fromEntries(fruit);
+        console.log(myObj);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

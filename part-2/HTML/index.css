@@ -1,0 +1,6 @@
+.hyperlinks a{
+    text-decoration: none;
+    color: red;
+    background-color: black;
+    font-size: 20px;
+}

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        // for in loop using print key/value of pairs 
+        //  let obj = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // for (const key in obj) {
+        //         const element = obj[key];
+        //         console.log(key +":"+ element);
+        // }
+
+        // assing method ========> key/value addd kare object ma  like object ne merge kare or key and value add kare 
+        // let obj = {a:2,b:3}
+        // let obj2 = {b:4,c:5}
+
+        // let result = Object.assign(obj,obj2)
+        // console.log(result);
+
+        // let obj = {a:2,b:4}
+        // let obj2 = {d:45,e:56}
+        // let result = Object.assign(obj2,obj)
+        // console.log(result);
+
+        // create method ===============> creates an object from an existing objec
+        // let person = {firstname:'tushar',lastname:'raval'}
+        // let man = Object.create(person)
+        // man.age = '34'
+        // man.email = 'tushar@gmail.com'
+        // console.log(man);
+        // console.log(person);
+
+        //The Object.entries()=================>  method returns an array of the key/value pairs of an object. no change in orignal object
+        // let obj = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // let result = Object.entries(obj)
+        // console.log(result);
+
+
+        // freeze method =-=======> object koi pan chage karva deti nathi
+        // let person = { firstname: 'tushar', lastname: 'raval', age: 50 }
+        // Object.freeze(person)
+
+        // person.firstname = 'chirag'
+        // console.log(person.firstname);
+
+
+        // The fromEntries()  ========> method creates an object from a list of key/value pairs.
+        // let fruits = [['apples',300],['chikoo',200],['banana',100],['pineapple',500]]
+        // // console.log(fruits);
+        // let result = Object.fromEntries(fruits)
+        // console.log(result);
+
+        // The Object.keys() ==============> method returns an array with the keys of an object. does not change the original object
+        // let obj = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // let result  = Object.keys(obj)
+        // console.log(result);
+
+
+        // seal method ===============>  prevents additions or deletions of new properties.
+        // let obj = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // Object.seal(obj)
+
+        // delete obj.email
+        // obj.password = '1345678'
+        // console.log(obj);
+
+        // The Object.values() method returns an array of the property values of an object.  not change  original object
+        // let obj = { firstName: 'Tushar', lastName: 'Raval', email: 'tushar456@gmail.com' }
+        // console.log(Object.values(obj))
+        
+
+
+
+    </script>
+</body>
+
+</html>

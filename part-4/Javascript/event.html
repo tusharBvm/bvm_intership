@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<!-- <body onload="LoadHandler()"> -->
+
+<body>
+
+
+    <!-- ===========================  mouse event ================================= -->
+    <p id="click"></p>
+
+    <button onclick="onClickHandler()">OnClick</button><br><br>
+
+    <button oncontextmenu="contextHandler()">OnContext</button><br><br>
+
+    <p id="double">this is double click</p>
+    <button ondblclick="dblHandler()">Double Click</button><br><br>
+
+    <p id="down" onmousedown="downHandler()" onmouseup="upHandler()">
+        this is Mouse Down Event Check <br>
+        this is mouse up Event Check
+    </p>
+
+    <button onmouseenter="enterHandler()">check mouse Enter</button>
+    <button onmouseleave="leaveHandler()">check mouse leave</button><br><br>
+
+    <button onmousemove="moveHandler()">check mouse Move</button>
+    <button onmouseout="outHandler()">check mouse Out</button><br><br>
+
+    <button onmouseover="overHandler()">check mouse Over</button>
+    <button onmouseup="upHandler()">check mouse Up</button><br><br>
+
+    <!-- ===========================  KeyBoard event ================================= -->
+
+    <input type="text" onkeydown="keyDownHandler()" onkeyup="keyUpHandler()">
+
+    <input type="text" onkeypress="keyPressHandler()">
+
+    <h3 id="key"></h3>
+
+
+
+    <p id="demo">Let AJAX change this text.</p>
+
+    <button type="button" onclick="loadDoc()">Change Content</button>
+
+
+    <script>
+
+        //apply on left click
+        function onClickHandler() {
+            document.getElementById('click').innerHTML = "Check onClick Event"
+        }
+
+        // apply on right click 
+        function contextHandler() {
+            document.getElementById('click').innerHTML = "Check Context Menu"
+        }
+
+        // double click apply
+        function dblHandler() {
+            document.getElementById('double').style.color = "red"
+        }
+
+        //mouse down and up event mouse click ne push 
+        function downHandler() {
+            document.getElementById('down').style.color = "blue"
+        }
+
+        function upHandler() {
+            document.getElementById('down').style.color = "green"
+        }
+
+        //mouse enter in are working
+        function enterHandler() {
+            document.getElementById('click').innerHTML = " check Onmouse enter"
+        }
+
+        // mouse leave when working
+        function leaveHandler() {
+            document.getElementById('click').innerHTML = "Check OnMouse Leave "
+        }
+
+        //similar work like mouse enter
+        function moveHandler() {
+            document.getElementById('click').innerHTML = "Check OnMouse Move "
+        }
+
+        //similar working on mouse leave
+        function outHandler() {
+            document.getElementById('click').innerHTML = "Check OnMouse Out "
+        }
+
+        function overHandler() {
+            document.getElementById('double').style.backgroundColor = "yellow "
+        }
+
+        // working on when i click release 
+        // function upHandler() {
+        //     document.getElementById('double').style.backgroundColor = "blue"
+        // }
+
+
+        //work on when press any key of keyboard
+        function keyDownHandler() {
+            document.getElementById('key').innerHTML = "Check key Down"
+        }
+
+        //work on when realse any key of keyboard
+        function keyUpHandler() {
+            document.getElementById('key').innerHTML = "Check key Up"
+        }
+
+        //similar  work like key down but in this keypress not working all key like ALT, CTRL, SHIFT, ESC
+        function keyPressHandler() {
+            document.getElementById('key').innerHTML = "Check key Press"
+        }
+
+        // when refresh page work function and on unLoad not working error ==>[Violation] Permissions policy violation: unload is not allowed in this document.Understand this error
+
+        // function LoadHandler() {
+        //     alert("check Onload Event")
+        // }
+
+        // =================================ajax explaination =========================
+        // ajax use ==>
+        // Update a web page without reloading the page
+        // Request data from a server - after the page has loaded
+        // Receive data from a server - after the page has loaded
+        // Send data to a server - in the background
+
+        // onreadystatechange	Defines a function to be called when the readyState property changes
+
+        //     readyState	Holds the status of the XMLHttpRequest.
+        // 0: request not initialized
+        // 1: server connection established
+        // 2: request received
+        // 3: processing request
+        // 4: request finished and response is ready
+
+        function loadDoc() {
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function () {
+                if (this.readyState == 4 && this.status == 200) {
+                    document.getElementById("demo").innerHTML = this.responseText;
+                    console.log("response===>", this.responseText);
+                }
+            };
+            xhttp.open("GET", "ajax.html", true);
+            xhttp.send();
+        }
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

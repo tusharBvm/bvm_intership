@@ -1,0 +1,465 @@
+<!DOCTYPE html>
+<html>
+
+<body>
+    <!-- <body  onload="pageLoad()"> -->
+
+    <!-- ====> (1,2) learning basics javascript and ○How JavaScript Fits into a Web Page = script -->
+    <h2>My First JavaScript</h2>
+
+    <div id="myName">Tushar</div><br><br>
+
+    <div id="color">change color using Javascript</div><br>
+    <button onclick="changeColor()">first color change </button>
+    <button onclick="setSecondColor()">second color button</button><br><br>
+
+    <div id="innerText"></div>
+
+    <div id="innnerHTML"></div>
+
+    <!-- onchage example  -->
+    <select name="city" id="city" onchange="cityChange()">
+        <option value="" selected>Select City</option>
+        <option value="Surat">Surat</option>
+        <option value="Rajkot">Rajkot</option>
+        <option value="Vapi">Vapi</option>
+    </select><br><br>
+
+    <p id="demo"></p>
+
+    <!-- onmouseover/mouse out event  -->
+    <div id="mouse"> myover changes</div>
+    <button onmouseover="over()">OnMouserOver</button>
+    <div>
+    </div><br>
+
+    <input type="text" id="down" onkeydown="keyDown()">
+    <span id="key"></span><br><br>
+
+    <div id="myDiv"></div>
+
+    <script>
+        // let myName = document.getElementById('myName').innerHTML = "dipak"
+        // console.log("myName==>",myName);
+
+        function changeColor() {
+            document.getElementById('color').style.color = "red"
+        }
+
+        function setSecondColor() {
+            document.getElementById('color').style.color = "blue"
+        }
+
+        document.getElementById('innerText').innerText = "Hello How Are You??"
+
+        document.getElementById('innnerHTML').innerHTML = "<h1>Hello How Are You??</h1>"
+
+        // onchage example
+        function cityChange() {
+            let city = document.getElementById('city').value
+            // console.log(city);
+            document.getElementById('demo').innerHTML = "Your Selected city :-" + city
+        }
+
+        // onmouser over and mouseout
+        function over() {
+            document.getElementById('mouse').innerHTML = "thank you"
+        }
+
+        function keyDown() {
+            let input = document.getElementById('down').value
+            // console.log(input);
+            document.getElementById('key').innerHTML = "your name:-" + input
+        }
+
+        // onload example call function on body
+        // function pageLoad () {
+        //     alert("welcoming to my page");
+        // }
+
+
+        let a = 5
+        let b = 10
+
+
+        let sum = a + b
+        document.write(sum);
+        console.log("sum==>", sum);
+
+
+        // popup box 
+        // alert("welcome")
+
+        // confirm box  return true and false value <== booloean 
+        // let demo = confirm("are you happy")
+        // console.log("demo",demo); 
+
+
+        // prompt box uses =>> user thorugh value get karva
+        // let n = prompt("please Enter Value of N")
+        // document.write(n)
+
+        // variable
+        // container for storing information and value its call a variable like a = 12
+        // in javascript 3 types of variable 1.var 2.let 3.const
+
+        // var ==> global scope, reassign - true , redeclare - true
+        // let ==> block scope , redeclare - false , reassgin - true
+        // const ==> block scope , redeclare - false , reassgin - false
+
+
+        // successfully work var 
+        //   {
+        //     var x = 5
+        //   }
+        //   console.log("x==>global scope",x);
+
+        // let and const  is block scope not working on out of scope given this error 
+        // Uncaught SyntaxError: Unexpected identifier 'block' (at index.html:71:8)Understand this error
+        //   {
+        //     let  y = 10
+        //   }
+        //   console.log("y==>",y);
+
+        // var ==> redeclare and reassign 
+        // var z = 10
+        // var z = 15
+        // console.log("z",z);
+
+        // let ==> not redeclare given this error => Identifier 'e' has already been declared
+        // let e = 5
+        // let e =10
+
+        // let reaasign 
+        // let e = "nehil"
+        //     e = 20
+        //     console.log("e==>",e);
+
+        // const not redeclare and reassign 
+        // redeclare error ==> Identifier 'z' has already been declared
+        // const z = 50
+        // const z = 80
+
+        // reassign error => TypeError: Assignment to constant variable.
+        // const d = 90
+        //     d = 100
+        //     console.log("d=>",d);
+
+        //  operator ==> operator using for logical and mathematical task 
+        // (1) arithmatic operator ==>> + - * /  % (** -> exposination )
+        // (2) assignmanet operator ==>> += -= *= /= %= **=
+        // (3) comparison operator ==>  == === != !== > <
+        // (4) logical operator ==> && || !
+        // (5) ternary operator ==> ? :
+
+        // exposination
+        // let z = 5 
+        // console.log("z==>", z**3); 
+
+        // let z = 10
+        // z+= 7
+        // console.log("z==>",z);
+
+        // let z = 
+        // z**= 4
+        // console.log("z",z);
+
+        // let demo = 25
+        // if (demo == 25) {
+        //     console.log("its true");
+        // }else{
+        //     console.log("wrong ans");
+        // }
+
+
+        // example of comparison operator
+        // let num1 = 25
+        // let num2 = 25
+        // let num3 = 29
+        // let num4 = 10
+        // console.log("==",num1 == num2);
+        // console.log("===",num1 === num2);
+        // console.log("!=",num1 != num3);
+        // console.log("!==",num1 !== num2);
+        // console.log("<",num1 < num3);
+        // console.log(">",num1 > num4);
+
+
+        // exaple of logical operator
+        // let x = 5
+        // let y = 5
+        // let z = 10
+
+        // if (x && y) {
+        //     console.log("this is true");
+        // }
+
+        // let isvalid = true
+        // let isdemo  = false
+
+        // if (isvalid || isdemo) {
+        //     console.log("ok");
+        // }
+
+        // if (!isdemo) {
+        //     console.log("true");
+        // }
+
+        // let x = 25
+        // let check = x % 2 == 0 ? "welcome" : "not welcome"
+        // console.log("check==>",check);
+
+        // data type in javascript
+        // in javascript 2 types of data type
+        // (1) primitive
+        // (2) non-primitive
+
+        // primitive ==>
+        // Number
+        // String
+        // Boolean ==> true,false 0=>true 1=>false
+        // undefined
+        // null
+        // BigInt
+        // symbol
+
+        // non-primitive ==>
+        // Object ==> array , function ,object
+
+        //number
+        // let z = 10
+        // console.log(typeof(z));
+
+        // string
+        // let x = "tushar"
+        // console.log(typeof(x));
+
+        //boolean
+        // let y = true
+        // console.log(typeof(y));
+
+        //undefined
+        // let check
+        // console.log(typeof(check));
+
+        // let t = BigInt(6474574754685688888888888888888888888)
+        // console.log(typeof(t));
+
+        // let abc = [24,45,"tushar",90,"raj"]
+        // console.log("abc==>",abc);
+        // console.log(typeof(abc));
+
+        // let data = [
+        //     {name:'tushar',email:"tushar@123.com",pass:'123',age:'23'},
+        //     {name:'nehil',email:"nehil@123.com",pass:'345',age:'28'},
+        // ]
+        // console.log("data==>",data);
+        // console.log(typeof(data));
+
+        // let j = 10
+        // let k = 40
+
+        // function total() {
+        //     sum = j + k
+        // }
+        // total()
+        // console.log("total",sum);
+
+        // types of function 
+        // 1.arrow 
+        // 2.immidatley invoked
+        // 3.annomyous 
+        // 4.closure
+        // 5.callback
+
+        // arrow function syntax short and es6 ma declare 
+        // let mul = () => 5 * 2
+        // console.log("mul==>",mul());
+
+        // immidatley invoked
+        // (function() {
+        //   let message = "Hello!";
+        //   console.log(message);
+        // })();
+
+
+        //annomyous not required for name 
+        // (function (a,b) {
+        //     let sum = 10 + 20
+        //     console.log("sum==>",sum);
+        // })()
+
+        // closure function ==> one function in add onother function its work base laxical scope .. access to outer scope variable for use 
+        // function createCounter() {
+        //     let count = 0
+        //     return function () {
+        //         count = count + 1
+        //         console.log(count);
+        //     }
+        // }
+        // let counter1 = createCounter()
+        // counter1()
+        // counter1()
+        // counter1()
+
+        // let counter2 = createCounter()
+        // counter2()
+        // counter2()
+
+        // call back function ==> one function passed arrgument to another function
+
+        // function sum( ans ){
+        //     console.log(ans) ;
+        // }
+        // function add(a, b){
+        //     sum(a+b) ;
+        // }
+        // add(2,5);
+
+
+        // object =>  collection of key values                                                                                                                  
+        // let data = {firstname:'tushar',lastname:'raval',age:'25',email:'tushar123@gmail.com',password:'123456'}
+        // console.log("data=>",data);
+        // console.log("get fname=>",data.firstname);
+        // console.log("get pass=>",data.password);
+
+        // for in loop in javascript print object key or values
+        // for (const key in data) {
+        //         const element = data[key];
+        //         // console.log(element);
+        //         // console.log(key);
+        // }
+
+
+        // let data = {}
+        // data.name = 'tushar',
+        // data.age = '23',
+        // data.email = 'tushar@gmail.com'
+        // console.log("data==>",data);
+        // console.log("data age==>",data.age);
+
+        // similar example and output but diffrence in syntax only 
+
+        // let data = new Object()
+        // data.name = 'dipak',
+        // data.age = '20',
+        // data.email = 'dipak@gmail.com'
+        // console.log("data==>",data);
+        // console.log("data age==>",data.age);
+        // console.log("data name==>",data['email']);
+
+        // let data = { firstname: 'tushar', lastname: 'raval', age: '25', email: 'tushar123@gmail.com', password: '123456' }
+        // let d = "firstname";
+        // console.log(data[d]);
+
+        // delete keyword using  in object delete key and value both after delete remove added key and value add automatically in object
+        // delete data.lastname
+        // console.log('after delete=>',data);
+
+        // HTML Events ==> onChange,onclick,onmouseover,onmouseout,onkeydown,onload etc.
+
+
+        // (3) in javascript es6 capability 
+        // let,const,arrow function,Destructuring,spread operator,rest parameter,foroff loop,promises,array,string,math method,templete litterals,default parameters
+
+        // destructring example
+        // let destruct = {name:'tushar',age:'23',work:'developer',type:'mern'}
+        // let {name,age,work,type} = destruct
+        // console.log(destruct.name);
+
+        // spread operator ==> array mathi value copy/get karva
+        // let x = [1,2,3,4,5]
+        // let y = [...x,6,7,8,9]
+        // console.log("y=>",y);
+
+
+        // spread operator function
+        // function rest(...numbers) {
+        //     let total = 0;
+        //     for (const num of numbers) {
+        //         total += num;
+        //     }
+        //     return total;
+        // }
+
+        // console.log(rest(1, 2, 3));
+        // console.log(rest(10, 20, 30, 40, 50)); 
+
+
+        //foroff loop ==> array mathi value get
+        // let array = [10,20,30,40,50]
+        // let array = ["tushar","parth","chirag"]
+
+        // for (const element of array) {
+        //     console.log(element);
+        // }
+
+        // promies ==> types 3 pending fulllfilled rejected
+
+        // let promise = new Promise((resolve, rejected) => {
+        //     setTimeout(() => {
+        //         let k = 91
+        //     if (k % 2 == 0) {
+        //         resolve("its a true Ans")
+        //     } else {
+        //         rejected('Its wrong Ans')
+        //     }
+        //     }, 2000);
+
+        // })
+
+        // promise.then((message) => {
+        //     console.log(message);
+        // }).catch((error) => {
+        //     console.log(error);
+        // }).finally(() => {
+        //     console.log("Completed");
+        // })
+
+        // diffrence between setInterval and setTimeout ==> 1 time output when time completed settimeout and multiple time output clockwise
+
+        // let time = "check time"
+        // setTimeout(() => {
+        //     console.log(time);
+        // }, 2000);
+
+        // setInterval(() => {
+        //     console.log(time);
+        // }, 2000);
+
+        // template litterals
+
+        // let name = "tushar"
+        // let getData = `my name is ${name}`
+        // console.log("getdta==>",getData);
+
+        // let abc = ["tushar",'parth',"chirag"]
+        // let get = `my name is ${abc[2]}`
+        // console.log(get);
+
+
+        // Default parameters ==> arrgument in set default value declaretion
+
+        // function Default(x,y=10) {
+        //     total = x + y
+        // }
+        // Default(50)
+        // console.log("total==>",total);
+
+
+
+        // setInterval(() => {
+        //     let getDate = new Date()
+        //     // console.log(getDate);
+        //     let localtime = getDate.toLocaleTimeString()
+        //     document.write(localtime);
+        //         console.log(localtime);
+        // }, 1000);
+
+        // displayClock on screen 
+       
+    </script>
+
+</body>
+
+</html>

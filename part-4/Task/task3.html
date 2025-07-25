@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let myObject = {
+            character: "McPenguinFace",
+            origin: "Donald Duck",
+            notes: "Classic 1939 cartoon .",
+            canFly: true,
+
+            chirp: function () {
+                console.log("CHIRP CHIRP! Is this what penguins sound like?");
+            },
+
+            sayHello: function () {
+                console.log("Hello, I'm a penguin and my name is " + this.character + "!");
+            },
+
+            fly: function () {
+                if (this.canFly) {
+                    console.log("I can fly!");
+                } else {
+                    console.log("No flying for me!");
+                }
+            }
+        };
+
+        //Add a new property to your myObject called favoriteFoods and set it equal to an array containing a list of three strings.
+        myObject.favouriteFoods = ["pizza", "burger", "chineese"]
+        console.log("add new property==>", myObject.favouriteFoods);
+
+        // Access your myObject's second favorite food and print it to the console using console.log()
+        console.log("second favourite food==>", myObject.favouriteFoods[1]);
+
+        // Create a new variable called firstFavFood and set it equal to the first item in your myObject's array of favorite foods.
+        let firstFavFood = "panipuri"
+        myObject.favouriteFoods.unshift(firstFavFood)
+        console.log("first favourite food==>", myObject.favouriteFoods);
+
+        //Add another food to the end of the list.
+        let EndofList = "vadapav"
+        myObject.favouriteFoods.push(EndofList)
+        console.log("endoflist value push==>", myObject.favouriteFoods);
+
+        // Print the length of your myObject's favoriteFoods array to the console with console.log()
+        console.log("length check==>", myObject.favouriteFoods.length);
+
+        //  Without modifying any of your previous code, write a new line of code that changes the value of the last item in the list to "pineapples" (overwriting the previous value)
+        console.log("favourite food===>", myObject.favouriteFoods);
+        let removeLastFood = myObject.favouriteFoods.pop()
+        let updatedData = "pineapple"
+        myObject.favouriteFoods.push(updatedData)
+        console.log("replace value ==>", myObject.favouriteFoods);
+
+
+        //Create a new variable named lastFavFood that will always point to the last element of your myObject's favoriteFoods array, no matter how many items are in the list.
+        let lastFavFood = "dhosa"
+        myObject.favouriteFoods.push(lastFavFood)
+        console.log("last index value set", myObject.favouriteFoods);
+
+        // Write a for loop to iterate through every food in your myObject's favoriteFood property and print each one to the console.
+        for (let index = 0; index < myObject.favouriteFoods.length; index++) {
+            const element = myObject.favouriteFoods[index];
+            console.log("favourite food ==>", element);
+        }
+
+        // Add a new property to your myObject called outfit and set it equal to another object with the following properties: hat, shirt, pants, and shoes -- each property should have a string as its value! (I suggest you give it a baseball cap, Hawaiian shirt, cargo shorts, and flip-flops.)
+        myObject.fashion = { "cap": "baseball", "shirt": "havayan", "pant": "cargo", "shoes": "flipFlop" }
+        console.log("add new property==>", myObject.fashion);
+
+        //  Create a new variable called penguinHatType and set it equal to the value of the hat in your myObject's outfit! Then print your new variable to the console.
+        let penguinHatType = { "hat": "red" }
+        let result = Object.assign(myObject.fashion, penguinHatType)
+        console.log("result==>", result);
+
+        // Without modifying any of your previous code, write one new line of code to add an accessory property to your myObject's outfit and set it equal to the string "pocket watch" -- because penguins are classy like that!
+
+        let poketWatch = { "accessory": "handWatch" }
+        let data = Object.assign(myObject.fashion, poketWatch)
+        console.log("data===>", data);
+
+        // Write one more line of code to change the hat in your myObject's outfit to "top hat" and override the previous value. (Again, because penguins are classy!)
+
+        const obj = {"hat":"red"}
+        Object.assign(obj,{"top hat":obj.hat})['hat']
+        delete obj['hat']
+        console.log("new key===>",obj);
+        
+        // Let's delete the pants property from this myObject's outfit property.
+        delete myObject.fashion.pant
+        console.log("delete pant==>", myObject.fashion);
+
+        //  Write a for ... in loop to print the value of each piece of clothing in your myObject's outfit so you can see a list of clothing items in the console.
+        for (const key in myObject.fashion) {
+            const element = myObject.fashion[key];
+            console.log("clothing items list==>", element);
+        }
+
+
+    </script>
+</body>
+
+</html>

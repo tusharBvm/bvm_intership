@@ -1,0 +1,524 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+        rel="stylesheet">
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
+    <link rel="stylesheet" href="./multifield.css">
+</head>
+
+<body>
+    <div class="main-cotainer">
+        <div class="form-container">
+            <div>
+                <h2 class="text-center mb-3" style="color: white;font-weight: 700;">Input Form</h2>
+            </div>
+            <form class="row g-3" id="form" action="searchresults.html">
+                <div class="col-md-6">
+                    <label class="form-label">First Name</label>
+                    <input type="text" class="form-control" placeholder="Please Enter First Name" id="firstname"
+                        minlength="3" maxlength="30">
+                    <span class="error" id="error" style="display: none;"></span>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Last Name</label>
+                    <input type="text" class="form-control" placeholder="Please Enter Last Name" id="lastname"
+                        minlength="3" maxlength="30">
+                    <span class="error" id="error1" style="display: none;"></span>
+
+
+                </div>
+                <div class="col-md-6">
+                    <span>Gender</span> <br>
+                    <label><input style="margin-left: 10px;margin-top: 10px;" type="radio" name="gender" value="Male">
+                        Male</label>
+                    <label><input style="margin-left: 10px;" type="radio" name="gender" value="Female"> Female</label>
+                    <span class="error" id="error2" style="display: none;"></span>
+
+                </div>
+                <div class="col-md-6">
+                    <span>Language</span> <br>
+                    <label><input style="margin-left: 10px;margin-top: 10px;" type="checkbox" name="languages"
+                            value="English"> English</label>
+                    <label><input style="margin-left: 10px;margin-top: 10px;" type="checkbox" name="languages"
+                            value="Hindi"> Hindi</label>
+                    <label><input style="margin-left: 10px;margin-top: 10px;" type="checkbox" name="languages"
+                            value="Gujrati"> Gujrati</label>
+                    <span class="error" id="error3" style="display: none;"></span>
+
+                </div>
+                <div class="col-12 mb-3">
+                    <label for="address" class="form-label">Address</label>
+                    <textarea id="address" name="address" class="form-control" rows="4"
+                        placeholder="Enter your full address"></textarea>
+                    <span class="error" id="error4" style="display: none;"></span>
+
+                </div>
+
+                <div class="col-md-6">
+                    <label class="form-label">Country</label>
+                    <select class="form-select" aria-label="Default select example" id="country">
+                        <option value="" selected disabled>Select Your Country</option>
+                        <option value="India">India</option>
+                        <option value="Australia">Australia</option>
+                        <option value="America">America</option>
+                    </select>
+                    <span class="error" id="error5" style="display: none;"></span>
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Age</label>
+                    <input type="number" id="age" name="age" class="form-control" min="0" max="100"
+                        placeholder="Please Enter Age ">
+                    <span class="error" id="error6" style="display: none;"></span>
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Phone Number</label>
+                    <input type="tel" id="phone" name="phone" class="form-control" pattern="\d{10}" maxlength="10"
+                        minlength="10" placeholder="Please Enter Phone Number ">
+                    <span class="error" id="error7" style="display: none;"></span>
+
+                </div>
+                <div class="col-md-6">
+                    <label class="form-label">Upload Image</label>
+                    <input type="file" id="image" name="image" class="form-control" accept="image/*">
+                    <img id="previewImage" alt="Preview"
+                        style="max-width: 150px; max-height: 150px; display: none;margin-top: 10px;">
+                    <span class="error" id="error8" style="display: none;"></span>
+                </div>
+
+                <div class="col-12 text-center ">
+                    <button type="submit" class="submit">Submit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+
+    <div class="container-fuild">
+        <div class="container">
+            <div class="col-md-6">
+                <label class="form-label" style="color: white;"> Search</label>
+                <input type="text" class="form-control" placeholder="Search Here" id="searchBar">
+            </div>
+        </div>
+    </div>
+
+    <div class="select">
+    <div class="col-sm-2">
+        <label class="form-label" style="color: white;">Country</label>
+        <select class="form-select " aria-label="Default select example" id="countryFind">
+            <option value="" selected >Select Your Country</option>
+            <option value="India">India</option>
+            <option value="Australia">Australia</option>
+            <option value="America">America</option>
+        </select>
+    </div>
+
+     <div class="col-sm-2">
+        <label class="form-label" style="color: white;">Gender</label>
+        <select class="form-select " aria-label="Default select example" id="genderFind">
+            <option value="" selected >Select Your Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+        </select>
+    </div>
+
+     <div class="col-sm-2">
+        <label class="form-label" style="color: white;">Language</label>
+        <select class="form-select " aria-label="Default select example" id="languageFind">
+            <option value="" selected >Select Your Language</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Gujrati">Gujrati</option>
+        </select>
+    </div>
+    </div>
+
+
+
+    <div class="container">
+        <div>
+            <h2 class="card-title">Card View</h2>
+        </div>
+        <div class="card-content mt-5 mb-5">
+            <div class="row" id="card-container">
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        let form = document.getElementById('form')
+        // let errorElement = document.getElementById('error')
+        let entries = []
+
+        let editingIndex = null
+        let ageInput = document.getElementById('age')
+        // console.log("ageInput==>", ageInput);
+        // let serchInput = document.getElementById('search')
+        // console.log("serch==>",serchInput);
+
+        // serchInput.addEventListener('input', function (e) {
+        //     let value = this.value
+        //     console.log("search.value==>", value);
+        // })
+
+
+        ageInput.addEventListener('input', function () {
+            let value = parseInt(this.value);
+            // console.log("vale",value);
+
+            if (isNaN(value) || value < 1) {
+                this.value = 1;
+            } else if (value > 100) {
+                this.value = 100;
+            }
+        });
+
+        document.getElementById('image').addEventListener('change', function (e) {
+            const file = e.target.files[0];
+            const preview = document.getElementById('previewImage');
+
+            if (file) {
+                const url = URL.createObjectURL(file);
+                preview.src = url;
+                preview.style.display = 'block';
+            } else {
+                preview.src = '';
+                preview.style.display = 'none';
+            }
+        });
+
+        form.addEventListener('submit', function (e) {
+            // console.log("demo");
+            // let message = []
+
+            e.preventDefault()
+
+            let firstname = document.getElementById('firstname').value
+            // console.log("first name==>",firstname);
+
+            if (!firstname) {
+                document.getElementById('error').innerHTML = "Please Enter First Name"
+                document.getElementById('error').style.display = "block";
+                fname = true
+            } else {
+                document.getElementById('error').style.display = "none";
+            }
+
+            let lastname = document.getElementById('lastname').value
+            // console.log("lastname ==>",lastname);
+
+            if (!lastname) {
+                document.getElementById('error1').innerHTML = "Please Enter Last Name"
+                document.getElementById('error1').style.display = "block"
+            } else {
+                document.getElementById('error1').style.display = "none";
+            }
+
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || "";
+            // console.log("gender ==>",gender);
+
+            if (!gender) {
+                document.getElementById('error2').innerHTML = "Please Select Gender"
+                document.getElementById('error2').style.display = "block"
+            } else {
+                document.getElementById('error2').style.display = "none";
+            }
+
+            let language = Array.from(document.querySelectorAll('input[name="languages"]:checked')).map(el => el.value)
+            // console.log("language ==>", language);
+
+            if (language.length == 0) {
+                document.getElementById('error3').innerHTML = "Please Select Language"
+                document.getElementById('error3').style.display = "block"
+            } else {
+                document.getElementById('error3').style.display = "none";
+            }
+
+            let address = document.getElementById('address').value
+            // console.log("address ==>", address);
+
+            if (!address) {
+                document.getElementById('error4').innerHTML = "Please Enter Address"
+                document.getElementById('error4').style.display = "block"
+            } else {
+                document.getElementById('error4').style.display = "none";
+            }
+
+            let country = document.getElementById('country').value
+            // console.log("country ==>", country);
+
+            if (!country) {
+                document.getElementById('error5').innerHTML = "Please Select Contry"
+                document.getElementById('error5').style.display = "block"
+            } else {
+                document.getElementById('error5').style.display = "none";
+            }
+
+            let age = document.getElementById('age').value
+            // console.log("age==>", age);
+
+            if (!age) {
+                document.getElementById('error6').innerHTML = "Please Enter Age"
+                document.getElementById('error6').style.display = "block"
+            } else {
+                document.getElementById('error6').style.display = "none";
+            }
+
+            let phone = document.getElementById('phone').value
+            // console.log("phone==>", phone);
+
+            if (!phone) {
+                document.getElementById('error7').innerHTML = "Please Enter Age"
+                document.getElementById('error7').style.display = "block"
+            } else {
+                document.getElementById('error7').style.display = "none";
+            }
+
+            let imageInput = document.getElementById('image').files[0];
+            // console.log("imageInput===>", imageInput);
+
+            if (!imageInput) {
+                document.getElementById('error8').innerHTML = "Please Select Image"
+                document.getElementById('error8').style.display = "block"
+            } else {
+                document.getElementById('error8').style.display = "none";
+            }
+
+            let image;
+
+            if (imageInput) {
+                image = URL.createObjectURL(imageInput);
+                // console.log(image);
+            } else if (editingIndex !== null) {
+                image = entries[editingIndex].image;
+
+            } else {
+                image = "";
+            }
+
+            let entry = { firstname, lastname, gender, language, address, country, age, phone, image }
+            // console.log("firstname===>",entry.firstname);
+            // console.log("lastname===>",lastname);
+            // console.log("image===>",image);
+
+
+            if (editingIndex !== null) {
+                entries[editingIndex] = entry;
+                editingIndex = null;
+                form.reset()
+
+            } else {
+                if (firstname !== "" && lastname !== "" && gender !== "" && language.length !== 0 && address !== "" && age !== "" && phone !== "" && image !== "") {
+                    entries.push(entry);
+                    const preview = document.getElementById('previewImage');
+                    preview.style.display = 'none';
+                    form.reset()
+                }
+            }
+            getData()
+        })
+
+        console.log("entrie", entries);
+
+
+        function getData(filterData) {
+
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';
+
+            entries.forEach((entry, index) => {
+                container.innerHTML += `
+                <div class="col-sm-4 mb-3">
+                    <div class="card ">
+                        <div class="image">
+                             <img src="${entry.image}" class="card-img-top" alt=Upload_Image_Properly>
+                        </div>
+                        <div class="card-body">
+                            <span>FirstName: ${entry.firstname}</span><br>
+                            <span>LastName: ${entry.lastname}</span><br>
+                            <span>Gender: ${entry.gender}</span><br>
+                            <span>Language: ${entry.language}</span><br>
+                             <span>Address: ${entry.address}</span><br>
+                            <span>Country: ${entry.country}</span><br>
+                            <span>Age: ${entry.age}</span><br>
+                            <span>Phone: ${entry.phone}</span><br><br>
+                            <div class="btn-grp">
+                                <button  onclick="DeleteHandler(${index})" class=" handler-btn ">Delete</button>
+                                <button  onclick="EditHandler(${index})" class="  handler-btn">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> `
+            })
+
+        }
+
+        function search(filterData) {
+            console.log("search==>", filterData);
+
+            //   let searchFilter = filterData
+            // console.log("filtrDara==>",searchFilter);
+
+            const container = document.getElementById('card-container');
+            container.innerHTML = '';
+
+            filterData.forEach((entry, index) => {
+                container.innerHTML += `
+                <div class="col-sm-4 mb-3">
+                    <div class="card ">
+                        <div class="image">
+                             <img src="${entry.image}" class="card-img-top" alt=Upload_Image_Properly>
+                        </div>
+                        <div class="card-body">
+                            <span>FirstName: ${entry.firstname}</span><br>
+                            <span>LastName: ${entry.lastname}</span><br>
+                            <span>Gender: ${entry.gender}</span><br>
+                            <span>Language: ${entry.language}</span><br>
+                             <span>Address: ${entry.address}</span><br>
+                            <span>Country: ${entry.country}</span><br>
+                            <span>Age: ${entry.age}</span><br>
+                            <span>Phone: ${entry.phone}</span><br><br>
+                            <div class="btn-grp">
+                                <button  onclick="DeleteHandler(${index})" class=" handler-btn ">Delete</button>
+                                <button  onclick="EditHandler(${index})" class="  handler-btn">Update</button>
+                            </div>
+                        </div>
+                    </div>
+                </div> `
+            })
+
+        }
+
+
+        function DeleteHandler(index) {
+            // console.log(index);
+            entries.splice(index, 1)
+            getData()
+        }
+
+        function EditHandler(index) {
+            // console.log(index);
+            let entry = entries[index]
+            // console.log(entry);
+
+            document.getElementById('firstname').value = entry.firstname
+
+            document.getElementById('lastname').value = entry.lastname
+
+            if (entry.gender) {
+                document.querySelector(`input[name="gender"][value="${entry.gender}"]`).checked = true
+            }
+
+            document.querySelectorAll('input[name="languages"]').forEach(el => el.checked = false)
+            entry.language.forEach(language => {
+                let checkbox = document.querySelector(`input[name="languages"][value="${language}"]`)
+                if (checkbox) checkbox.checked = true
+            })
+
+            document.getElementById('address').value = entry.address
+
+            document.getElementById('country').value = entry.country
+
+            document.getElementById('age').value = entry.age
+
+            document.getElementById('phone').value = entry.phone
+
+            editingIndex = index;
+        }
+
+        document.getElementById('searchBar').addEventListener('keyup', (e) => {
+            const searchData = e.target.value.toLowerCase()
+            // console.log("serchDta==>", searchData);
+            const filterData = entries.filter((item) => {
+                // console.log("check filter return==>", item.firstname.toLowerCase().includes(searchData), item.firstname.toLowerCase(), searchData)
+                // console.log("check  filter return==>", item.lastname.toLowerCase().includes(searchData), item.lastname.toLowerCase(), searchData)
+                // console.log("find first==>",item.firstname);
+                // console.log("find gender ==>",item.gender);
+                // console.log("find Language ==>",item.language);
+                console.log("check filter return", item.firstname.toLowerCase().includes(searchData) || item.lastname.toLowerCase().includes(searchData)) || item.age.includes(searchData) || item.phone.includes(searchData) || item.country.toLowerCase().includes(searchData) || item.gender.toLowerCase().includes(searchData) || item.address.toLowerCase().includes(searchData) || item.language.join().toLowerCase().includes(searchData);
+
+                return (
+                    item.firstname.toLowerCase().includes(searchData) || item.lastname.toLowerCase().includes(searchData) || item.age.includes(searchData) || item.phone.includes(searchData) || item.country.toLowerCase().includes(searchData) || item.gender.toLowerCase().includes(searchData) ||item.address.toLowerCase().includes(searchData) || item.language.join().toLowerCase().includes(searchData)
+                    // item.firstname && item.lastname.toLowerCase().includes(searchData)
+                    // item.firstname.toLowerCase().includes(searchData)
+                )
+            })
+            // console.log("filterData==>", filterData);
+            if (filterData) {
+                search(filterData)
+            }
+        })
+
+        document.getElementById('countryFind').addEventListener('click', (e) => {
+                const select = e.target.value.toLowerCase()
+                // console.log("select==>",select);
+
+                const filterData = entries.filter((el) => {
+                    // console.log("check selectfilter return==>", el.country.toLowerCase().includes(select));
+                    return (
+                        el.country.toLowerCase().includes(select)
+                    )
+                })
+                // console.log("filterData==>", filterData);
+                if (filterData) {
+                    search(filterData)
+                }
+            })
+
+        document.getElementById('genderFind').addEventListener('click',(e)=>{
+            const select = e.target.value.toLowerCase()
+            console.log("select==>",select);
+
+            const filterData = entries.filter((el)=>{
+                // console.log("check selectfilter retuen==>",el.gender.toLowerCase().includes(select));
+                
+                return(
+                    // el.gender.toLowerCase().includes(select)
+                    el.gender.toLowerCase() === select
+                    
+                )
+            })
+            // console.log("filterDaata==>",filterData);
+            if (filterData) {
+                search(filterData)
+            }
+        })
+
+        document.getElementById('languageFind').addEventListener('click',(e)=>{
+            const select = e.target.value.toLowerCase()
+            console.log("select==>",select);
+
+            const filterData = entries.filter((el)=>{
+                console.log("check select filter return==>", el.language.join().toLowerCase().includes(select));
+                
+                return(
+                    el.language.join().toLowerCase().includes(select)
+                )
+            })
+            console.log("filterDra==>",filterData);
+            if (filterData) {
+                search(filterData)
+            }
+        })
+
+      
+        
+
+     
+
+       
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // from method create new Array 
+        // let a = [1,2,3,4,5]
+        // let b = Array.from(a,(x=>x*2))
+        // console.log("b==>",b);
+        // console.log("a==>",a);
+
+        //array is array if jo array hase true return kare otherwise false
+        // let a = [1,2,3,4,5]
+        // let b = 'demo'
+        // console.log(Array.isArray(a));
+        // console.log(Array.isArray(b));
+
+        //of method create new array
+        //    let a =(Array.of('tushar',23,'demo'));
+        //    console.log(a);
+
+        // at method inedex par ni value return kare
+        // let a = [78,54,67,90]
+        // console.log(a.at(2));
+
+        // concat method 2 array ne merge kare
+        // let a = ['tushar','raval']
+        // let b = ['chirag','rathod']
+        // let result = a.concat(b)
+        // console.log(result);
+
+        // The entries() method returns an iterator with the key/value pairs from an array:
+        // let a = [67,78,56,34,56]
+        // let result = a.entries()
+
+        // for (const element of result) {
+        //     console.log(element);
+        // }
+
+        //every method working on function if condition true and return true otherwise false
+        // let ages= [45,67,34,78,23]
+        // function checkAge(age) {
+        //     return age > 20
+        // }
+        // ages.every(checkAge)
+        // console.log(ages.every(checkAge));
+
+        // fill method no use array ma koi pan value set karva mate thay
+        // let a = [56,78,34,67,90,57,45]
+        // console.log(a.fill("demo",2,4));
+
+        //filter return new array but its depend on condition  other wise  empty array return kare
+        // let a = ['chikoo','banana','pineapple','juice']
+        // let result = a.filter((el)=> el.length > 5)
+        // console.log(result);
+
+        // let b = [10,25,30,48,79,23]
+        // let res = b.filter((el)=> el % 2 == 0)
+        // console.log(res);
+
+        //find method work base on conition return first value condition true
+        // let a = ['chikoo','banana','pineapple','juice']
+        // let result = a.find((el)=> el.length > 6)
+        // console.log(result);
+
+        // let b = [25,30,48,79,23]
+        // let res = b.find((el)=> el % 2 == 0)
+        // console.log(res);
+
+
+        // findindex index return kare che condition mujab first element ni otherwise condition false -1 return kare
+        // let a = [4,5,6,9,15,12]
+        // let result = (el) =>  el > 10;
+        // console.log(a.findIndex(result));
+
+        // condition check pachl thi thase
+        //find last conditon mujab working karse jo conditin true thase last ma je element hase te value return karse otherwise undefine
+        // const array1 = [5, 12, 50, 130, 44,99,60];
+        // const found = array1.findLast((element) => element > 75);
+        // console.log(found);
+
+        // condition last thi count thase eni index return kare
+        // const array = [5, 12, 50, 130, 44,90];
+        // const result = (element) => element > 45;
+        // console.log(array.findLastIndex(result));
+
+        // flat method create new array sub array ne merge kari ne  one array return kare
+        // let a = [10,20,30,[40,50,],[70,80]]
+        // let result =  a.flat()
+        // console.log(result);
+
+        //faltmap condition mujab new array return kare  like example num === 60 hoi to 60 ni index par jetla parameter tema 40,60,80 and no hoi to 999 avse
+        // let a = [30,40,60,70,80,70,34,23]
+        // let result = a.flatMap((num)=>(num === 60 ? [40,60,80]:999))
+        // console.log(result);
+
+        // The forEach() method calls a function for each element in an array.
+
+        // let a = [34,56,78,90]
+        // a.forEach((el)=>{
+        //     console.log(el);
+        // })
+
+        // let a = [10,20,30,40]
+        // let sum  = 0
+        // a.forEach((el)=>{
+        //     sum = sum + el
+        // })
+        // console.log(sum);
+
+        // includes method array mathi value check kare che jo value hoi to true otherwise false return kare
+        // let a = ['chikoo','banana','apple','lemon']
+        // console.log(a.includes('chikoo'));
+        // console.log(a.includes('juice'));
+
+
+        // indexof value par ni index return kare no hoi to -1 return kare
+        // let a = ['chikoo', 'banana', 'apple', 'lemon', 'juice', 'demo']
+        // console.log(a.indexOf('apple'));
+        // console.log(a.indexOf('lemon', 2));
+
+        //join method ne string ma convert kare and 2 element vache je add karvu hoi te add karva ape
+        // let a =  [45,67,89,90]
+        // let result = a.join()
+        // console.log(result);
+        // console.log(typeof(result));
+
+        // let a = [67,56,34,23]
+        // let result = a.join(",,")
+        // console.log(result);
+
+        // index par ni key return kare
+        // let a = ['chikoo', 'banana', 'apple', 'lemon']
+        // let result = a.keys()
+
+        // for (const key of result) {
+        //     console.log(key);
+        // }
+
+        // element ni last index return kare
+        // let a = [2,4,5,6,7,2,78,2,90,2,45]
+        // console.log(a.lastIndexOf(2));
+
+        // return new array
+        // let a = [2,3,4,5]
+        // let result = a.map((el)=>(el * 2))
+        // console.log(result);
+
+        // array mathi last element remove kare
+        // let a = [34,56,76,23,45]
+        // console.log(a.pop());
+        // console.log(a);
+
+        // array ni last ma element add kare
+        // let a = [67,78,34,24,65]
+        // let result = a.push(56,78,89)
+        // console.log(a);
+
+
+        // The reduce() method executes a reducer function for array element.
+        // The reduce() method returns a single value: the function's accumulated result.
+        // The reduce() method does not execute the function for empty array elements.
+        // The reduce() method does not change the original array.
+
+        // let a = [10, 20, 40, 60]
+        // let result = a.reduce((x, y) => (
+        //     x + y
+        // ))
+        // console.log(result);
+
+        //array ne reverse kare
+        // let a = [10,20,30,40]
+        // console.log(a.reverse());
+
+        // shift method Array mathi first Element remove kare 
+        // let a = [67,56,78,34]
+        // let result = a.shift()
+        // console.log(result);
+        // console.log(a);
+
+        // array element ne copy kare 
+        // let a = [30,40,50,60,70,80,90]
+        // console.log(a.slice(3));
+        // console.log(a.slice(2,5));
+
+        // some method array mathi element ne check kare ek pan element sathe condition true thay to return true ape otherwise false 
+        // let a = [95,97,93,2]
+        // let result = (el) => el % 2 == 0
+        // console.log(a.some(result));
+
+        // sort method no assednig and desending mate thay  // defaulter parameter wise condition check kare etle 1000 first ave 
+        // let a = [67, 23, 56, 9,234,14,1]
+        // let result = a.sort()
+        // console.log(result);
+
+        // let a = [67, 23, 56, 9,234,14,1]
+        // let result = a.sort((a,b)=>a-b)
+        // console.log(result);
+
+        // let result = a.sort((a,b)=>b-a)
+        // console.log(result);
+
+        // The splice() method adds and/or removes array elements.
+        // The splice() method overwrites the original array.
+        // let a  = [56,45,34,23,42,67,34]
+        // 2 indx pela na elem remove
+        // let result = a.splice(2)   
+
+        // 0 index parthi  2 data remove 
+        // let result = a.splice(0,2)
+
+        // 3 index parthi 3 data remove
+        // let result = a.splice(3,3)
+
+        // let result = a.splice(6,0,99,888)
+
+        // console.log(result);
+        // console.log(a);
+
+        // unshift method array ma first index par Element add kare
+        // let a = [34,67,89,24,54]
+        // let result = a.unshift(99,88,22,11)
+        // console.log(a);
+
+        // Splice method no remove only add on any index 
+        // let a = ['demo','tushar','raval','jay']
+        // let result = a.splice(5,0,'chirag')
+        // console.log("r ==>",result);
+        // console.log("a ==>",a);
+        
+        
+        
+        
+        
+
+        
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,33 @@
+<script>
+    let str1 = "We are doing some exercises."
+    // javascript
+
+    function insert(str1) {
+        // console.log(str1);
+        let strStore1 = str1
+        console.log("strStore1 ==>",strStore1);
+
+        // console.log(strStore1.length);
+
+        let addFirst = strStore1.padStart(39,'JavaScript ')
+        console.log("Add First Possition ==>",addFirst);
+
+        let SplitStore1 = strStore1.split('')
+        // console.log("splitStore ==>",SplitStore1);
+
+        let Add18posValue = SplitStore1.splice(18,0,'Javascript ')
+        // console.log("Add18posValue ==>", Add18posValue);
+        // console.log("SplitStore1 ==>",SplitStore1);
+
+        let JoinString  = SplitStore1
+        // console.log("join ==>",JoinString);
+
+        let result = JoinString.join("")
+        console.log("result ==>",result);
+
+    }
+
+        
+    insert(str1)
+
+</script>

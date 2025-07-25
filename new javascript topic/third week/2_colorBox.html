@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="colorBox.css">
+</head>
+
+<body>
+    <button onclick="addBox()">+</button>
+    <button onclick="removeBox()">-</button><br><br>
+
+    <div id="boxContainer"></div>
+    <script>
+
+
+
+        function addBox() {
+            box = document.createElement('div')
+            box.className = "box"
+            box.id = "box"
+            // box.id = "bg"
+            // box.style.backgroundColor = "red"
+            
+            function change() {
+                var randomColor = Math.floor(Math.random() *  16777215).toString(16);
+                box.style.backgroundColor  = "#" + randomColor;
+                let colorStore = box.style.backgroundColor  = "#" + randomColor
+                // console.log("colorStroe",colorStore); 
+            }
+            change()
+            boxContainer.appendChild(box)
+
+
+            // let changeBg = document.getElementsByClassName('box')
+            let changeBg = document.getElementById('box')
+            // console.log("chageBg ==> ",changeBg);
+
+            // let color = ["black", "green", "pink", "red", "yellow", "blue", "brown"]
+
+
+            // console.log(color.length);
+
+
+            // for (let i = 0; i < color.length; i++) {
+            //     // console.log(color);
+            //     changeBg.style.backgroundColor = color[i]
+            //     // console.log("i ===> ",i);
+            //     console.log("color[i]==>",color[i]);
+            //     debugger
+
+
+            //     // console.log("change bg ===> ",changeBg.style.backgroundColor = color[i]);
+            // }
+
+
+
+            //     color.map((el) => {
+            //         // console.log(el);
+            //         // (el == "black") ? changeBg.style.backgroundColor = "black" :''
+            //         if (el == "black") {
+            //             changeBg[0].style.backgroundColor = "black"
+            //         } else if (el == "green") {
+            //             changeBg[1].style.backgroundColor = "green"
+            //         } else if (el == "pink") {
+            //             changeBg[2].style.backgroundColor = "pink"
+            //         } else if (el == "red") {
+            //             changeBg[3].style.backgroundColor = "red"
+            //         } else if (el == "yellow") {
+            //             changeBg[4].style.backgroundColor = "yellow"
+            //         } else if (el == "blue") {
+            //             changeBg[5].style.backgroundColor = "blue"
+            //         } else if (el == "brown") {
+            //             changeBg[4].style.backgroundColor = "brown"
+            //         }
+            //     })
+
+            // }
+        }
+        function removeBox() {
+            // console.log("remove");
+            let lastBox = boxContainer.lastElementChild
+            if (lastBox) {
+                boxContainer.removeChild(lastBox)
+            }
+        }
+    </script>
+</body>
+
+</html>

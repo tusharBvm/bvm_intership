@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+
+</style>
+
+<!-- states api = "https://countriesnow.space/api/v0.1/countries/states" -->
+<!-- countries and city  = "https://countriesnow.space/api/v0.1/countries/" -->
+
+<body>
+    <div style="display: flex;justify-content: space-evenly;">
+
+        <div>
+            <label for="countries">Countries</label><br><br>
+            <select name="countries" id="countries">
+                <option value="">Select Country</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="states">States</label><br><br>
+            <select name="states" id="states">
+                <option value="">Select State</option>
+            </select>
+        </div>
+
+        <div>
+            <label for="cities">Cities</label><br><br>
+            <select name="cities" id="cities">
+                <option value="">Select City</option>
+            </select>
+        </div>
+    </div>
+
+
+    <script>
+
+        // let countryData = []
+        let countryData = JSON.parse(localStorage.getItem('country-store')) || []
+        // console.log('countryData ===>', countryData);
+
+         let cityData = JSON.parse(localStorage.getItem('city-store')) || []
+        console.log('cityData ===>', cityData);
+
+        async function getCountry() {
+            let url = "https://countriesnow.space/api/v0.1/countries/states";
+            try {
+                let response = await fetch(url)
+                const json = await response.json()
+                // console.log(json.data[0].name);
+                // console.log(json.data);
+                // demo(json)
+                countryData = json.data
+                // console.log("countryData ===>", countryData);
+                localStorage.setItem('country-store', JSON.stringify(countryData))
+
+
+                let countrySelect = document.getElementById('countries')
+                countryData.map((el) => {
+                    let option = document.createElement('option')
+                    option.textContent = el.name
+                    // let states = el.states
+                    // console.log("states=======>", states);
+                    countrySelect.append(option)
+                })
+          
+            } catch (error) {
+                console.log(error.message);
+            }
+        }
+        getCountry()
+
+        document.getElementById('countries').addEventListener('change', function (e) {
+            let selectCountry = e.target.value
+            // console.log("selectCountry ==>", selectCountry);
+
+            let findState = countryData.find((el) => {
+                return (
+                    el.name === selectCountry
+                )
+            })
+
+            let AllState = findState.states
+            // console.log("all State ==>",AllState);
+            let stastSelect = document.getElementById('states')
+            AllState.map((el) => {
+                let option = document.createElement('option')
+                option.textContent = el.name
+                stastSelect.append(option)
+            })
+        })
+
+     async function GetCity() {
+        try {
+            let res = await fetch('https://countriesnow.space/api/v0.1/countries/')
+            let cityRes =await  res.json()
+            // console.log("cityRes ==> ",cityRes.data);
+            cityData = cityRes.data
+            // console.log("cityData ==> ",cityData);
+            localStorage.setItem('city-store', JSON.stringify(cityData))
+        } catch (error) {
+            console.log(error.message);
+        }
+      }
+      GetCity()
+
+      document.getElementById('countries').addEventListener('change',function (e) {
+            let selectCountry = e.target.value   
+            // console.log("selectCountry ==> ",selectCountry);
+            
+            document.getElementById('cities').innerHTML = ""
+
+            let findCity = cityData.find((el)=>{
+                return(
+                    el.country === selectCountry
+                )
+            })
+            // console.log("findCity ==>",findCity.cities);
+            let  AllCity = findCity?.cities
+            console.log("All City ====>",AllCity);
+
+            let citySelect = document.getElementById('cities')
+            AllCity?.map((el)=>{
+                let option = document.createElement('option')
+                option.textContent = el
+                citySelect.append(option)
+            })          
+      })
+
+    </script>
+</body>
+
+</html>

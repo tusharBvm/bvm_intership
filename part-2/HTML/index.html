@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css">
+</head>
+
+<body>
+    <a href="#section2">section</a>
+    <div>
+        <b>Formatting Tag</b><br>
+        <b> - Bold text </b> <br>
+        <strong> - Important text </strong><br>
+        <i> - Italic text </i> <br>
+        <em> - Emphasized text </em><br>
+        <mark> - Marked text </mark><br>
+        <small> - Smaller text </small><br>
+        <del> - Deleted text </del><br>
+        <ins> - Inserted text </ins><br>
+        <p>This text contains <sub>subscript</sub> text.</p>
+        <p>This text contains <sup>superscript</sup> text.</p>
+    </div>
+
+    <h2>List style</h2>
+    <!-- three type of list tag
+    (1) order list (2) unorder list (description list) -->
+
+    <!-- type = -->
+    <ol>
+        <li>mango</li>
+        <li>chikoo</li>
+        <li>bannaa</li>
+    </ol>
+
+    <ul style="list-style:square;">
+        <li>One</li>
+        <li>two</li>
+        <li>three</li>
+    </ul>
+
+
+    <dl>
+        <dt>car</dt>
+        <dd>using for Long distance</dd>
+        <dt>bike</dt>
+        <dd>using for short ditance</dd>
+    </dl><br><br>
+
+    <!-- working with specil charactor -->
+    <pre>
+         <strong>working with specil charactor</strong>
+    <span>my name is tushar.&nbsp;&nbsp;i am working on bvm infotech.</span>
+        less than = &lt;
+        greater than = &gt;
+        ampersand = &amp;
+        double quotation mark = &quot;
+        single quotation mark = &apos;
+        	cent =	&cent;
+            pound =	&pound;
+            yen	= &yen;
+            euro = &euro;
+            copyright =	&copy;
+            registered trademark = &reg;
+            trademark =	&trade;
+    </pre>
+
+    <!-- alignment text on page -->
+    <h1 style="text-align: center;">This text is centered</h1>
+    <h1 style="text-align: right;">This heading is right-aligned.</h1>
+    <h1 style="text-align: left;">This heading is left-aligned.</h1>
+
+
+    <!-- creating simple table -->
+    <table border="1" width="30%">
+        <thead>
+            <h1>Simple Table:-</h1>
+            <tr align="center">
+                <th>No</th>
+                <th>Name</th>
+                <th>English</th>
+                <th>Gujrati</th>
+                <th>Hindi</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr align="center">
+                <td>1</td>
+                <td>Tushar</td>
+                <td>45</td>
+                <td>42</td>
+                <td>37</td>
+            </tr>
+            <tr align="center">
+                <td>1</td>
+                <td>Dipak</td>
+                <td>49</td>
+                <td>44</td>
+                <td>41</td>
+            </tr>
+        </tbody>
+    </table><br><br>
+
+   
+    <table border="1" width="30%" >
+        <thead style="background-color: #f7b000;">
+            <h1>Neasted Table with RowSpan</h1>
+            <th>Device</th>
+            <th>Brand</th>
+            <th>Specification</th>
+        </thead>
+        <tbody>
+            <tr>
+                <td rowspan="1" style="background-color: #f7db86;">smartphone</td>
+                <td rowspan="1" style="background-color: #f7db86;">Apple</td>
+                <td>
+                    <table border="1" width="100%" >
+                        <thead>
+                            <tr style="background-color: #82bf45;">
+                                <th>Model</th>
+                                <th>Storage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr style="background-color: #dcedc6;">
+                                <td >iphone12</td>
+                                <td>256gb</td>
+                            </tr>
+                            <tr style="background-color: #dcedc6;">
+                                <td>iphone12</td>
+                                <td>256gb</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+            </tr>
+            <tr style="background-color: #f7db86;">
+                <td>laptop</td>
+                <td>Hp</td>
+                <td>15.6" display</td>
+            </tr>
+            <tr style="background-color: #f7db86;">
+                <td>tablet</td>
+                <td>samsung</td>
+                <td>10.6" display</td>
+            </tr>
+        </tbody>
+    </table><br><br>
+    <h1>using web address</h1>
+    <a href="https://www.youtube.com/">Click Here</a><br>
+    <!-- Linking Within a Page Using Anchors   declare in top 1 line -->
+    <h2 id="section2">This is the section you'll link to</h2>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Veniam, itaque! Magnam, enim placeat minima dicta
+        consequatur qui repellat doloribus facilis tempora provident, suscipit explicabo corporis sint itaque eveniet!
+        Incidunt, ratione explicabo reprehenderit est recusandae autem fugit molestias soluta doloribus velit, minus
+        iusto adipisci, nam quidem assumenda fuga itaque debitis ad.</p>
+
+    <!-- linking mail address to send mail -->
+    <a href="mailto:tushar.bvminfotech@gmail.com">Click to Send Mail</a><br><br>
+
+    <!-- Opening a Link in a New Browser Window  -->
+    <a href="https://www.youtube.com/" target="_blank">open new tab</a><br><br>
+
+    <!-- Using CSS to Style Hyperlinks  -->
+    <div class="hyperlinks">
+        <a href="https://www.youtube.com/" target="_blank">Hyperlink</a>
+    </div>
+
+
+</body>
+
+</html>

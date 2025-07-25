@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Box Creator</title>
+  <link rel="stylesheet" href="colorbox2.css">
+</head>
+<body>
+
+    <button onclick="addBox()">+</button>
+    <button onclick="removeBox()">-</button>
+
+  <div class="box-container" id="boxContainer"></div>
+
+  <script>
+    const colors = [
+      "red", "blue", "green", "yellow",
+      "pink", "brown", "navy", "orange"];
+
+    let useColor = [];
+
+    function allColor() {
+      for (let color of colors) {
+        // console.log("color ==> ",color);
+        
+        if (!useColor.includes(color)) {
+          // console.log("used color include ==>",!useColor.includes(color));
+          useColor.push(color);
+          return color;
+        }
+      }
+    }
+
+    function addBox() {
+
+      const color = allColor();
+      if (!color) {
+        alert("All colors used!");
+      }
+
+      const box = document.createElement("div");
+      box.className = "box";
+      box.style.backgroundColor = color;
+      document.getElementById("boxContainer").appendChild(box);
+    }
+
+    
+    function removeBox() {
+
+      const container = document.getElementById("boxContainer");
+      const lastBox = container.lastElementChild;
+      if (lastBox) {
+        container.removeChild(lastBox);
+        useColor.pop();
+      }
+    }
+  </script>
+</body>
+</html>

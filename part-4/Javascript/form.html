@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form id="form">
+        <input type="text" name="firstName" id="firstname" placeholder="First Name"><br><br>
+        <input type="text" name="lastName" id="lastname" placeholder="Last Name"><br><br>
+
+        <input type="button" value="Click Me" onclick="ClickHandler()"><br><br>
+
+        <input type="radio" name="gender" value="Male">Male
+        <input type="radio" name="gender" value="Female">Female <br><br>
+
+        <input type="checkbox" name="language" value="English">English
+        <input type="checkbox" name="language" value="Hindi">Hindi
+        <input type="checkbox" name="language" value="Gujrati">Gujrati <br><br>
+
+        <input type="color" id="favcolor" name="favcolor" value="#ff0000"><br><br>
+
+        <input type="date" id="date"><br><br>
+
+        <input type="datetime-local" id="time"> <br><br>
+
+        <input type="email" id="email" name="email" placeholder="Email"><br><br>
+
+        <input type="file" id="image" name="image"><br><br>
+
+        <input type="month" id="month"><br><br>
+
+        <input type="number" id="age" name="age" min="1" max="100" placeholder="Age"><br><br>
+
+        <input type="password" id="password" name="password" placeholder="password"><br><br>
+
+        <span id="priceRange"></span>
+        <input type="range" name="price" id="price" min="100" max="1000"><br><br>
+
+        <input type="search" id="gsearch" name="gsearch" placeholder="search"><br><br>
+
+        <input type="tel" id="phone" name="phone" maxlength="10" placeholder="Phone"><br><br>
+
+        <input type="url" id="url" name="url" placeholder="Url"><br><br>
+
+        <input type="week" id="week" name="week"><br><br>
+
+
+
+        <input type="submit">
+        <input type="reset">
+        <br>
+        <br>
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>No</th>
+                    <th>firstName</th>
+                    <th>lastName</th>
+                    <th>gender</th>
+                    <th>language</th>
+                    <th>favColor</th>
+                    <th>date</th>
+                    <th>time</th>
+                    <th>email</th>
+                    <th>image</th>
+                    <th>month</th>
+                    <th>age</th>
+                    <th>password</th>
+                    <th>price</th>
+                    <th>search</th>
+                    <th>phone</th>
+                    <th>url</th>
+                    <th>week</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody">
+
+            </tbody>
+
+        </table>
+    </form>
+    <script>
+        let form = document.getElementById('form')
+        let list = []
+
+        // document.getElementById('image').addEventListener('change', function (e) {
+        //     const file = e.target.files[0]
+        //     // console.log("file==>",file);
+        //     if (file) {
+        //         const url = URL.createObjectURL(file)
+        //         // console.log("url==>",url);
+        //     }
+        // })
+
+        document.getElementById('age').addEventListener('input', function (params) {
+            let value = parseInt(this.value)
+            // console.log("value==>",value);
+            if (isNaN(value)) {
+                this.value = ""
+            } else if (value < 1) {
+                this.value = 1
+            } else if (value > 100) {
+                this.value = 100
+            }
+        })
+
+        document.getElementById('price').addEventListener('change', function (params) {
+            // console.log("demo");
+            let value = this.value
+            // console.log("value==>",this.value);
+            if (value) {
+                document.getElementById('priceRange').innerHTML = value
+            }
+        })
+
+        form.addEventListener('submit', function (e) {
+            // console.log("demo");
+            e.preventDefault()
+
+            let firstName = document.getElementById('firstname').value
+            // console.log("firstname==>", firstName);
+
+            let lastName = document.getElementById('lastname').value
+            // console.log("lastName==>", lastName);
+
+            let gender = document.querySelector('input[name="gender"]:checked')?.value || ""
+            // console.log("gender==>", gender);
+
+            let language = Array.from(document.querySelectorAll('input[name="language"]:checked')).map(el => el.value)
+            // console.log("language==>", language);
+
+            let favColor = document.getElementById('favcolor').value
+            // console.log("favColor==>", favColor);
+
+            let date = document.getElementById('date').value
+            // console.log("date===>", date);
+
+            let time = document.getElementById('time').value
+            // console.log("time==>", time);
+
+            let email = document.getElementById('email').value
+            // console.log("email==>", email);
+
+            let image = document.getElementById('image').files[0]
+            // console.log("image==>", image);
+
+            let imageInput
+            if (image) {
+                imageInput = URL.createObjectURL(image)
+                // console.log("imageInput==>",imageInput);
+            } else {
+                imageInput = ""
+            }
+
+            let month = document.getElementById('month').value
+            // console.log("month==>", month);
+
+            let age = document.getElementById('age').value
+            // console.log("age==>", age);
+
+            let password = document.getElementById('password').value
+            // console.log("password==>", password);
+
+            let price = document.getElementById('price').value
+            // console.log("price==>", price);
+
+            let search = document.getElementById('gsearch').value
+            // console.log("search==>", search);
+
+            let phone = document.getElementById('phone').value
+            // console.log("phone==>", phone);
+
+            let url = document.getElementById('url').value
+            // console.log('url==>', url);
+
+            let week = document.getElementById('week').value
+            // console.log('week==>', week);
+
+            let data = { firstName, lastName, gender, language, favColor, date, time, email, imageInput, month, age, password, price, search, phone, url, week }
+
+            list.push(data)
+            getData()
+            form.reset()
+        })
+
+        function ClickHandler() {
+            alert('Hello!!')
+        }
+
+        function getData() {
+            const table = document.getElementById('tableBody')
+            table.innerHTML = '';
+
+            list.map((el, index) => {
+                table.innerHTML += `
+                <tr align="center">
+                    <td>${index + 1}</td>
+                    <td>${el.firstName}</td>
+                    <td>${el.lastName}</td>
+                    <td>${el.gender}</td>
+                    <td>${el.language}</td>
+                    <td style="background-color:${el.favColor};"></td>
+                    <td>${el.date}</td>
+                    <td>${el.time}</td>
+                    <td>${el.email}</td>
+                    <td><img src="${el.imageInput}" alt="not upload" height="100px" width="100px" style="padding: 20px;"></td>
+                    <td>${el.month}</td>
+                    <td>${el.age}</td>
+                    <td>${el.password}</td>
+                    <td>${el.price}</td>
+                    <td>${el.search}</td>
+                    <td>${el.phone}</td>
+                    <td><a href="${el.url} target="_blank" >click</a></td>
+                    <td>${el.week}</td>
+                </tr>
+                `
+            })
+
+        }
+
+
+
+    </script>
+</body>
+
+</html>

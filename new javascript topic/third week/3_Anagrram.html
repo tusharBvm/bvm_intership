@@ -1,0 +1,55 @@
+<script>
+    let firstString = "Mary";
+    let secondString = "Army";
+
+    let str1 = firstString.toLowerCase().split('')
+    // console.log("str1 ==>",str1);
+
+    let str2 = secondString.toLowerCase().split('')
+    // console.log("str2 ===>",str2);
+
+    function IsAnagram(str1, str2) {
+        // console.log("str1 ==>",str1);
+        // console.log("str2 ==>",str2);
+
+        let n1 = str1.length
+        // console.log("n1 ==>",n1);
+
+        let n2 = str2.length
+        // console.log("n2 ==>",n2);
+
+
+        if (n1 != n2) {
+            // console.log("compare ==>",false);
+            return false
+        }
+
+        let sortStr1 = str1.sort()
+        // console.log("sortStr1 ==>",sortStr1);
+
+        let sortStr2 = str2.sort()
+        // console.log("sortStr2 ==>",sortStr2);
+
+        for (i = 0; i < sortStr1.length; i++) {
+                console.log("sort1 ==>",sortStr1[i]);
+                console.log("sort2 ==>",sortStr2[i]);
+                
+            if (sortStr1[i] != sortStr2[i]) {
+                // console.log("return false ==>", false);
+                return false
+            }
+            // console.log("return true ==>", true);
+            return true
+        }
+
+    }
+    // IsAnagram(str1, str2)
+
+    if (IsAnagram(str1, str2)) {
+        console.log("Mary is an anagram of Army");
+    } else {
+        console.log("The two strings are not anagram of each other");
+    }
+
+
+</script>

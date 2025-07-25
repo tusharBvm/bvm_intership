@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="calculator.css">
+</head>
+
+<body>
+    <div class="box">
+        <div class="flex">
+            <div class="display" id="display"></div>
+            <div>
+                <button class="clear" onclick="clearDisplay()">C</button>
+            </div>
+        </div>
+        <div class="btn-grp">
+            <button onclick="setValue('7')">7</button>
+            <button onclick="setValue('8')">8</button>
+            <button onclick="setValue('9')">9</button>
+            <button onclick="setValue('/')">/</button>
+        </div>
+        <div class="btn-grp">
+            <button onclick="setValue('4')">4</button>
+            <button onclick="setValue('5')">5</button>
+            <button onclick="setValue('6')">6</button>
+            <button onclick="setValue('*')">*</button>
+        </div>
+        <div class="btn-grp">
+            <button onclick="setValue('1')">1</button>
+            <button onclick="setValue('2')">2</button>
+            <button onclick="setValue('3')">3</button>
+            <button onclick="setValue('-')">-</button>
+        </div>
+        <div class="btn-grp">
+            <button onclick="setValue('0')">0</button>
+            <button onclick="setValue('.')">.</button>
+            <button onclick="output('=')">=</button>
+            <button onclick="setValue('+')">+</button>
+        </div>
+    </div>
+    <script>
+        let current = 0
+        let result = false
+
+        function setValue(value) {
+            // console.log("value ==>", value);
+            if (current === '0' || result) {
+                current = value
+            } else {
+                current += value
+            }
+            result = false
+            update()
+        }
+
+        function update() {
+            const displayElement = document.getElementById("display");
+            displayElement.textContent = current;
+        }
+
+        function output() {
+            try {
+                let count = eval(current)
+                // console.log("count ==>", count);
+                current = count
+                update()
+            } catch (error) {
+                current = "Error"
+                update()
+            }
+            result = true
+        }
+        function clearDisplay() {
+            current = 0
+            update()
+        }
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const students = [
+            { name: "a", age: 22, className: "java" },
+            { name: "aa", age: 22, className: "java" },
+            { name: "aaa", age: 22, className: "java" },
+            { name: "ab", age: 21, className: "Node Js" },
+            { name: "abb", age: 21, className: "Node Js" },
+            { name: "abbb", age: 21, className: "Node Js" },
+        ];
+
+        // (1) print in console
+        // console.log(students);
+
+        // (2) Get student whose name is aaa and print in console.
+        // console.log(students[2]);
+
+
+        // (4) get all keys of student object and print in console
+        // const allKeys = students.flatMap(obj => Object.keys(obj));
+        // // console.log(allKeys);
+
+        // const uniqueKeys = [...new Set(allKeys)];
+        // console.log(uniqueKeys);
+
+
+        const data = {
+            "Node Js": [
+                {
+                    name: "ab",
+                    age: 21,
+                    className: "Node Js"
+                },
+                {
+                    name: "abb",
+                    age: 21,
+                    className: "Node Js"
+                },
+                {
+                    name: "abbb",
+                    age: 21,
+                    className: "Node Js"
+                }
+            ],
+            "java": [
+                {
+                    name: "a",
+                    age: 22,
+                    className: "java"
+                },
+                {
+                    name: "aa",
+                    age: 22,
+                    className: "java"
+                },
+                {
+                    name: "aaa",
+                    age: 22,
+                    className: "java"
+                }
+            ]
+        };
+
+        for (let key in data) {
+            console.log(`Class: ${key}`);
+
+            data[key].forEach(student => {
+               console.log(`  Name: ${student.name}, Age: ${student.age},ClassName:${student.className}`);
+            })
+
+            console.log(''); 
+        }
+
+
+    </script>
+</body>
+
+</html>

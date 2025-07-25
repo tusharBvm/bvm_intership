@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        const worksDuration = [
+            {
+                'name': 'Write tutorials',
+                'duration': 120
+            },
+            {
+                'name': 'Running',
+                'duration': 60
+            },
+            {
+                'name': 'Proccess',
+                'duration': 240
+            }
+        ];
+
+        // Add another element to the end of the worksDuration list.
+        // worksDuration.push({'name':'Developing','duration':90})
+        // console.log("add one ele of last index",worksDuration);
+
+        // Add another element to the beginning of the worksDuration list.
+        // worksDuration.unshift({'name':'Cleaning','duration':135})
+        // console.log("add one ele of first index",worksDuration);
+        
+        // Print the length of the worksDuration to the console.
+        //console.log("first time check ==>",worksDuration.length);
+
+
+        // Remove the last element from the end of list, and then print the length of the array to the console one more time.
+        //    console.log(worksDuration.pop());
+        //    console.log(worksDuration);
+        //    console.log(worksDuration.length);
+
+
+
+            for (let index = 0; index < worksDuration.length; index++) {
+                let data = worksDuration[index]
+                // console.log(`Index ${index}`);
+                console.log(`[${index},${data.name},${data.duration}]`);
+            }   
+
+        
+            // console.log(worksDuration.length); 
+
+        
+            //  Transform array of objects into array of strings with help of map.
+            // const arrayOfString = worksDuration.map(obj =>`Name:${obj.name},duration:${obj.duration}`)
+            // console.log(arrayOfString);
+            
+
+            //sorting in duration
+            // worksDuration.sort((a,b)=>a.duration - b.duration)
+            // console.log(worksDuration);
+
+            
+        //    function sum(a,b) {
+        //         let data1 = a
+        //         let data2 = b
+        //         return function total(data3) {
+        //             output = data1 + data2 + data3
+        //             console.log(output);
+        //             return output
+        //         } 
+                
+        //    }
+        //  const recal = sum(10,20)
+        //  console.log(recal(30))
+        //  console.log(recal(40))
+
+        
+        
+    </script>
+</body>
+
+</html>
