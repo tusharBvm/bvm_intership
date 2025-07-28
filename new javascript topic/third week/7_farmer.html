@@ -1,0 +1,26 @@
+<script>
+
+    let string = "farmer is doing farming";
+
+    let spaceRemove = string.replace(/\s/g, '')
+    // console.log("space remove ==>",spaceRemove);
+
+    let OtherWords = [...new Set(spaceRemove)];
+    console.log(OtherWords);
+
+    let result = OtherWords.map( char =>{
+        // console.log(char);
+
+        console.log("return  log ===>",[...spaceRemove].filter(c => c === char));
+        return{
+            name : char,
+            occurance: [...spaceRemove].filter(c => c === char).length
+        }
+    })
+
+    console.log(result);
+
+
+
+
+</script>

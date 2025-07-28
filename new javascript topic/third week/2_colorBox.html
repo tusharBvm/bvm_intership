@@ -23,14 +23,32 @@
             box.id = "box"
             // box.id = "bg"
             // box.style.backgroundColor = "red"
+
+
+            var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            console.log("random color ==> ",randomColor);
             
-            function change() {
-                var randomColor = Math.floor(Math.random() *  16777215).toString(16);
-                box.style.backgroundColor  = "#" + randomColor;
-                let colorStore = box.style.backgroundColor  = "#" + randomColor
-                // console.log("colorStroe",colorStore); 
+            box.style.backgroundColor = "#" + randomColor;
+            // console.log("box style ==>", "#" + randomColor);
+            
+               if (!box.style.backgroundColor) {
+                document.getElementById('box').style.display = "none" 
+                
             }
-            change()
+            console.log(
+               "check =====> " ,(!box.style.backgroundColor)
+            );
+            
+            // let colorStore = box.style.backgroundColor = "#" + randomColor
+            // console.log("colorStroe",colorStore); 
+
+
+            // document.getElementById('hide').style.display = "none"
+
+         
+
+
+
             boxContainer.appendChild(box)
 
 
@@ -55,8 +73,6 @@
             //     // console.log("change bg ===> ",changeBg.style.backgroundColor = color[i]);
             // }
 
-
-
             //     color.map((el) => {
             //         // console.log(el);
             //         // (el == "black") ? changeBg.style.backgroundColor = "black" :''
@@ -78,6 +94,16 @@
             //     })
 
             // }
+
+
+            //      // function change() {
+            //     var randomColor = Math.floor(Math.random() *  16777215).toString(16);
+
+            //     box.style.backgroundColor  = "#" + randomColor;
+            //     let colorStore = box.style.backgroundColor  = "#" + randomColor
+            //     // console.log("colorStroe",colorStore); 
+            // // }
+            // // change()
         }
         function removeBox() {
             // console.log("remove");

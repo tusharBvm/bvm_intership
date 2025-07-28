@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="colorBox.css">
+</head>
+
+<body>
+    <button onclick="addBox()">+</button>
+    <button onclick="removeBox()">-</button><br><br>
+
+    <div id="boxContainer"></div>
+    <script>
+
+          var randomColor = Math.floor(Math.random() * 16777215).toString(16);
+            console.log("random color ==> ",randomColor);
+
+        
+            
+
+
+        function addBox() {
+            box = document.createElement('div')
+            box.className = "box"
+            box.id = "box"
+
+          
+            // box.style.backgroundColor = "#" + randomColor;
+             boxContainer.appendChild(box)
+
+
+        }
+        function removeBox() {
+            // console.log("remove");
+            let lastBox = boxContainer.lastElementChild
+            if (lastBox) {
+                boxContainer.removeChild(lastBox)
+            }
+        }
+    </script>
+</body>
+
+</html>
