@@ -9,4 +9,29 @@
 ==> useEffect:- useEffect is allows to perform side effect in components.side Effect likes ==> fetch Data from Api,directly Updating DOM,timers.useEffect work on 3 ways.(1)without dependency work on every render (2)with Empty dependency
 		one time work (3)with dependency working on when updated value change in state  
 
+==> useContext:- globally state manage .. props drilling breaks.
+
+step(1)create new context file with .js extension. in file create context import karvano.then export karvano.UserContext Variable name
+
+ex. ==> import { createContext } from "react";
+	export const MyContext = createContext()
+
+(2) je components ma use karvano tya import karvano.
+
+(3)app.js ma globally state create karva no.Context Create wali file import karva ni pachi Context ne Wrap Karvano ane teno provider banava no. ane value pass karva ni . always name value={name} hovu joi ee.
+		
+	 <MyContext.Provider value={value}>
+      <Routes>
+        <Route path="/" element={<Student  student={studentData}/>}/>
+        <Route path="/state" element={<State/>}/>
+        <Route path="/effect" element={<Effect/>}/>
+        <Route path="/comp1" element={<Components1/>}/>
+        <Route path="/comp2" element={<Components2/>}/>
+      </Routes>
+      </MyContext.Provider>
+
+(4) je components ma context use karva no ee components ma context import karva no.pachi create one variable store in useContext(je Context Create karo hoi tenu name:MyContext)
+
+
+
 
