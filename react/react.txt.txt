@@ -1,0 +1,12 @@
+===> React Installtion :- npx create-react-app ./
+
+===> React Project Live Command :- npm start
+
+===> React Routing :- npm i react-router-dom 
+
+==> useState :-  useState return array With 2 Value. ==> 1st.Value Current State Value and 2nd.Updated Value . and render components and pages
+
+==> useEffect:- useEffect is allows to perform side effect in components.side Effect likes ==> fetch Data from Api,directly Updating DOM,timers.useEffect work on 3 ways.(1)without dependency work on every render (2)with Empty dependency
+		one time work (3)with dependency working on when updated value change in state  
+
+

@@ -9,13 +9,14 @@ import Product from './Pages/Product';
 import Blog from './Pages/Blog';
 import NotFound from './Pages/NotFound';
 import Variable from './Pages/Variable';
+import Stall from './Pages/Stall';
 
 function App() {
   return (
       <>
       
-      <Demo fname="tushar" lname="raval" email="tushar123@gmail.com"/> 
-      <Home/> 
+      {/* <Demo fname="tushar" lname="raval" email="tushar123@gmail.com"/>  */}
+      {/* <Home/>  */}
 
         <Routes>
             {/* //neasted routes example  */}
@@ -31,6 +32,9 @@ function App() {
               desc="Non-Slip Fitness Leisure Running Sneakers"
               price="$29"
             />}/>
+
+            <Route path="/stall" element={<Stall/>}/>
+
 
             <Route path="/variable" element={<Variable/>}/>
             <Route path="*" element={<NotFound />}/>
