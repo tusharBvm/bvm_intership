@@ -6,8 +6,12 @@
 
 ==> useState :-  useState return array With 2 Value. ==> 1st.Value Current State Value and 2nd.Updated Value . and render components and pages
 
+===========================================================
+
 ==> useEffect:- useEffect is allows to perform side effect in components.side Effect likes ==> fetch Data from Api,directly Updating DOM,timers.useEffect work on 3 ways.(1)without dependency work on every render (2)with Empty dependency
 		one time work (3)with dependency working on when updated value change in state  
+
+========================================================
 
 ==> useContext:- globally state manage .. props drilling breaks.
 
@@ -30,7 +34,60 @@ ex. ==> import { createContext } from "react";
       </Routes>
       </MyContext.Provider>
 
-(4) je components ma context use karva no ee components ma context import karva no.pachi create one variable store in useContext(je Context Create karo hoi tenu name:MyContext)
+(4) je components ma context use karva no ee components ma context import karva no.pachi create one variable store in useContext(je Context Create karo hoi tenu name:MyContext) 
+
+==========================================================
+
+===> useRef : The useRef Hook allows you to persist values between renders.
+	      It can be used to store a mutable value that does not cause a re-render when updated.
+              It can be used to access a DOM element directly.
+
+==========================================================
+
+====> useReducer : The useReducer Hook is similar to the useState Hook.
+		   It allows for custom state logic.
+                   
+                   The reducer function contains your custom state logic and the initialStatecan be a simple value but generally will contain an object.
+                   The useReducer Hook returns the current state and a dispatch method.
+
+		   useReducer Returns ==> An array with exactly two values:
+ 
+                   (1)The current state. During the first render, it’s set to init(initialArg) or initialArg (if there’s no init).
+		   (2)The dispatch function that lets you update the state to a different value and trigger a re-render.
+
+
+=======  syntax  ======
+
+import { useReducer } from 'react';
+
+function reducer(state, action) {
+  // ...  logic //
+}
+
+function MyComponent() {
+  const [state, dispatch] = useReducer(reducer, { age: 42 });
+  // ...  ///
+
+//dispatch Function //
+function handleClick() {
+  dispatch({ type: 'incremented_age' });
+  // ...
+
+=========================================================== 
+
+====> useCallBack :=	
+		    The React useCallback Hook returns a memoized callback function.
+
+========================================================
+
+====> useMemo :=
+		 The React useMemo Hook returns a memoized value. (epensive value counting mate use  like== 10000000000)
+		without useMemo return Output given delay..
+				
+
+
+
+
 
 
 
