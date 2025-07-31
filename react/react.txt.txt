@@ -82,8 +82,56 @@ function handleClick() {
 
 ====> useMemo :=
 		 The React useMemo Hook returns a memoized value. (epensive value counting mate use  like== 10000000000)
-		without useMemo return Output given delay..
+		 without useMemo return Output given delay..
 				
+========================================================
+
+===> Create Custom Hooks :=
+		
+( == Steps === )
+
+==> useForm Custom Hooks :-
+create 2 File Example Like : (1) useForm.js (2) any fileName.jsx (InputForm.jsx) but je file custom hook ni hoi ee file nu name small letter thi rakhvu. like use..any
+
+useForm File ma Logic Avse and second ma Ui and Code
+
+=======================================================
+
+====> useLayoutEffect :== The useLayoutEffect hook is similar to useEffect, but it’s executed synchronously after all DOM mutations. This makes it useful for manipulating the DOM immediately after a component is rendered.
+
+main width = clientWidth
+main height = clientHeight
+
+import React, { useState, useLayoutEffect, useRef } from 'react';
+
+function ResizableBox() {
+  const [width, setWidth] = useState(100);
+  const [height, setHeight] = useState(100);
+  const boxRef = useRef(null);
+
+  useLayoutEffect(() => {
+    const handleResize = () => {
+      setWidth(boxRef.current.clientWidth);
+      setHeight(boxRef.current.clientHeight);
+    };
+
+    handleResize();
+
+    window.addEventListener('resize', handleResize);
+    return () => window.removeEventListener('resize', handleResize);
+  }, []);
+
+  return (
+    <div ref={boxRef} style={{ width: '50%', height: '50%', backgroundColor: 'red' }}>
+      <p>Width: {width}px</p>
+      <p>Height: {height}px</p>
+    </div>
+  );
+}
+
+
+
+
 
 
 
