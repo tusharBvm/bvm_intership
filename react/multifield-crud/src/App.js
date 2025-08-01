@@ -6,9 +6,9 @@ import './Components/Asset/crud.css'
 
 function App() {
   return (
-    <div>
+    <>
         <MultiFieldCrud/>
-    </div>
+    </>
   );
 }
 
