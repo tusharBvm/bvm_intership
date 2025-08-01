@@ -38,6 +38,11 @@ function MultiFieldCrud() {
       age,
       image,
     };
+
+
+
+
+    
     // setList((prev) => [...prev, data]);
     setList([...list, data]);
     // formRef.current.reset()
