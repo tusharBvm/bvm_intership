@@ -88,6 +88,11 @@ function MultiFieldCrud() {
     setImage(null)
   }
 
+
+
+
+  
+
   // function ShowTable() {
   //    {
   //     return list.map((el,index) => {
