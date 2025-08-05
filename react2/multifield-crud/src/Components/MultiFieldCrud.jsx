@@ -18,7 +18,8 @@ function MultiFieldCrud() {
   // console.log("list ==>", list);
   const [errors, setErrors] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
-  
+  const [selectTerm, setSelectTerm] = useState("");
+  // console.log("select term ==>",typeof(searchTerm),selectTerm);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -93,14 +94,10 @@ function MultiFieldCrud() {
 
     if (!errorData.firstName.trim()) {
       errors.firstName = "firstName is required";
-    } else if (errorData.firstName.length < 4) {
-      errors.firstName = "firstName must be at least 4 characters long";
     }
 
     if (!errorData.lastName.trim()) {
       errors.lastName = "lastName is required";
-    } else if (errorData.lastName.length < 4) {
-      errors.lastName = "lastName must be at least 4 characters long";
     }
 
     if (!errorData.gender) {
@@ -216,56 +213,39 @@ function MultiFieldCrud() {
     setEditId(index);
   }
 
-  // function searchHandler(e) {
-  //     let searchData = e.target.value.toLowerCase()
-  //     // console.log("searchData==>",searchData);
-
-  //     let filterData = list.filter((el)=>{
-  //       return (
-  //         el.firstName.toLowerCase().includes(searchData)
-  //       )
-  //     })
-  //     console.log("filterData ===>",filterData);
-  // }
-  // ======================================================================================= ///
-
-  //   function SearchForm({ data }) {
-  //   const [searchTerm, setSearchTerm] = useState('');
-
-  //   const handleSearchChange = (event) => {
-  //     setSearchTerm(event.target.value);
-  //   };
-  //   const filteredItems = data.filter(item =>
-  //     item.name.toLowerCase().includes(searchTerm.toLowerCase())
-  //   );
-
-  //   return (
-  //     <div>
-  //       <input
-  //         type="text"
-  //         placeholder="Search..."
-  //         value={searchTerm}
-  //         onChange={handleSearchChange}
-  //       />
-  //       <ul>
-  //         {filteredItems.map(item => (
-  //           <li key={item.id}>{item.name}</li>
-  //         ))}
-  //       </ul>
-  //     </div>
-  //   );
-  // lodu filter data to thy pan double output htay jai/
-  // }
-
   function searchHandler(event) {
-    // console.log("target value ==>",event.target.value);
+    console.log("target value ==>", event.target.value);
     setSearchTerm(event.target.value);
   }
-  const filterData = list.filter((el) =>
-    el.firstName.toLowerCase().includes(searchTerm.toLowerCase())
-  );
 
-  console.log('filterData ==>',filterData);
+  function selectHandler(event) {
+    // console.log("select value ==>",event.target.value);
+    setSelectTerm(event.target.value);
+  }
+
+  const filteredList = searchTerm
+    ? list.filter(
+        (el) =>
+          el.firstName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          el.lastName.toLowerCase().includes(searchTerm.toLowerCase()) ||
+          el.phone.includes(searchTerm) ||
+          el.age.includes(searchTerm)
+        //  || el.city.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        // el.gender.toLowerCase() == searchTerm.toLowerCase() ||
+        // el.language.join().toLowerCase().includes(searchTerm.toLowerCase())
+      )
+    : list && selectTerm
+    ? list.filter(
+        (el) =>
+          el.city.toLowerCase().includes(selectTerm.toLowerCase()) ||
+          el.gender.toLowerCase() == selectTerm.toLowerCase() ||
+          el.language.join().toLowerCase().includes(selectTerm.toLowerCase())
+      )
+    : list;
+
+  // const filteredList = list
+  console.log("filteredList ==>",filteredList);
+  
 
   return (
     <>
@@ -445,53 +425,63 @@ function MultiFieldCrud() {
       <br />
       <br />
 
-      <div className="mb-3 col-4">
+      <div className="mb-3 col-4 p-4">
         <label className="form-label">Search Here</label>
         <input
           type="text"
           className="form-control"
           name="search"
-          // onChange={(e) => setFirstName(e.target.value)}
           onChange={searchHandler}
           value={searchTerm}
         />
       </div>
 
-      {/* {filterData.map((el, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{el.firstName}</td>
-                <td>{el.lastName}</td>
-                <td>{el.gender}</td>
-                <td>{el.language}</td>
-                <td>{el.city}</td>
-                <td>{el.phone}</td>
-                <td>{el.age}</td>
-                <td>
-                  <img
-                    src={el.image}
-                    alt="Not Upload"
-                    style={{ width: "150px", height: "150px", padding: "10px" }}
-                  />
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => deleteHandler(index)}
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => updateHandler(index)}
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-            ))} */}
+      <div className="d-flex gap-3 p-4">
+        <div className="mb-3 col-4">
+          <select
+            className="form-select"
+            name="findCity"
+            onChange={selectHandler}
+            value={selectTerm}
+          >
+            <option>Select City</option>
+            <option value="Surat">Surat</option>
+            <option value="Rajkot">Rajkot</option>
+            <option value="Tapi">Tapi</option>
+          </select>
+        </div>
+
+        <div className="mb-3 col-4">
+          <select
+            className="form-select"
+            name="findGender"
+            // onChange={searchHandler}
+            // value={searchTerm}
+            onChange={selectHandler}
+            value={selectTerm}
+          >
+            <option>Select Gender</option>
+            <option value="Male">Male</option>
+            <option value="Female">Female</option>
+          </select>
+        </div>
+
+        <div className="mb-3 col-4">
+          <select
+            className="form-select"
+            name="findLanguage"
+            // onChange={searchHandler}
+            // value={searchTerm}
+            onChange={selectHandler}
+            value={selectTerm}
+          >
+            <option>Select Language</option>
+            <option value="English">English</option>
+            <option value="Hindi">Hindi</option>
+            <option value="Gujrati">Gujrati</option>
+          </select>
+        </div>
+      </div>
 
       <div>
         <table className="table table-success table-striped">
@@ -524,13 +514,13 @@ function MultiFieldCrud() {
 
             {/* <ShowTable/> */}
 
-            {list.map((el, index) => (
+            {filteredList.map((el, index) => (
               <tr key={index}>
                 <td>{index + 1}</td>
                 <td>{el.firstName}</td>
                 <td>{el.lastName}</td>
                 <td>{el.gender}</td>
-                <td>{el.language}</td>
+                <td>{el.language.join(",")}</td>
                 <td>{el.city}</td>
                 <td>{el.phone}</td>
                 <td>{el.age}</td>
@@ -559,44 +549,6 @@ function MultiFieldCrud() {
                 </td>
               </tr>
             ))}
-
-              {filterData.map((el, index) => (
-              <tr key={index}>
-                <td>{index + 1}</td>
-                <td>{el.firstName}</td>
-                <td>{el.lastName}</td>
-                <td>{el.gender}</td>
-                <td>{el.language}</td>
-                <td>{el.city}</td>
-                <td>{el.phone}</td>
-                <td>{el.age}</td>
-                <td>
-                  <img
-                    src={el.image}
-                    alt="Not Upload"
-                    style={{ width: "150px", height: "150px", padding: "10px" }}
-                  />
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => deleteHandler(index)}
-                  >
-                    Delete
-                  </button>
-                </td>
-                <td>
-                  <button
-                    className="btn btn-success"
-                    onClick={() => updateHandler(index)}
-                  >
-                    Update
-                  </button>
-                </td>
-              </tr>
-            ))}
-
-
           </tbody>
         </table>
       </div>
