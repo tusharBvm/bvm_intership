@@ -13,10 +13,10 @@ function MultiFieldCrud() {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [image, setImage] = useState(null);
-  const [list, setList] = useState(()=>{
-     const storeList = localStorage.getItem('list-data');
+  const [list, setList] = useState(() => {
+    const storeList = localStorage.getItem("list-data");
     //  console.log("storelist==>",storeList);
-     return storeList ? JSON.parse(storeList) : []
+    return storeList ? JSON.parse(storeList) : [];
   });
 
   // const [list, setList] = useState([]);
@@ -32,6 +32,7 @@ function MultiFieldCrud() {
     localStorage.setItem("list-data", JSON.stringify(list));
   }, [list]);
 
+  // this useefect working when page refreshing therefore not workikng //
   // useEffect(() => {
   //   const storeList = localStorage.getItem("list-data") || [];
   //   console.log("storeList ==>", storeList);
@@ -92,18 +93,30 @@ function MultiFieldCrud() {
         image !== null
       ) {
         setList([...list, data]);
+        resetForm();
       }
     } else {
-      // console.log("Update");
-      let copyData = [...list];
-      // console.log("copyData ==>",copyData);
-      copyData[editId] = data;
-      setList(copyData);
-      setEditId(null);
+      if (
+        firstName !== "" &&
+        lastName !== "" &&
+        gender !== "" &&
+        language.length !== 0 &&
+        city !== "" &&
+        phone !== "" &&
+        age !== "" &&
+        image !== null
+      ) {
+        // console.log("Update");
+        let copyData = [...list];
+        // console.log("copyData ==>",copyData);
+        copyData[editId] = data;
+        setList(copyData);
+        setEditId(null);
+        resetForm();
+      }
     }
     // setList((prev) => [...prev, data]);
     // formRef.current.reset()
-    resetForm();
   }
 
   const validateForm = (errorData) => {
@@ -574,3 +587,5 @@ function MultiFieldCrud() {
 }
 
 export default MultiFieldCrud;
+
+// Filteration in Form and Data Store in Local Storage in React Js
