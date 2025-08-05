@@ -1,6 +1,7 @@
 import { eventWrapper } from "@testing-library/user-event/dist/utils";
 import React, { useRef, useState } from "react";
 import "../Assets/crud.css";
+import { useEffect } from "react";
 
 function MultiFieldCrud() {
   const [firstName, setFirstName] = useState("");
@@ -12,14 +13,33 @@ function MultiFieldCrud() {
   const [phone, setPhone] = useState("");
   const [age, setAge] = useState("");
   const [image, setImage] = useState(null);
-  const [list, setList] = useState([]);
+  const [list, setList] = useState(()=>{
+     const storeList = localStorage.getItem('list-data');
+    //  console.log("storelist==>",storeList);
+     return storeList ? JSON.parse(storeList) : []
+  });
+
+  // const [list, setList] = useState([]);
   let [editId, setEditId] = useState(null);
   // const formRef = useRef()
   // console.log("list ==>", list);
   const [errors, setErrors] = useState({});
   const [searchTerm, setSearchTerm] = useState("");
   const [selectTerm, setSelectTerm] = useState("");
-  // console.log("select term ==>",typeof(searchTerm),selectTerm);
+  // console.log("select term ==>", typeof searchTerm, selectTerm);
+
+  useEffect(() => {
+    localStorage.setItem("list-data", JSON.stringify(list));
+  }, [list]);
+
+  // useEffect(() => {
+  //   const storeList = localStorage.getItem("list-data") || [];
+  //   console.log("storeList ==>", storeList);
+
+  //   if (storeList) {
+  //     setList(JSON.parse(storeList));
+  //   }
+  // }, []);
 
   function submitHandler(e) {
     e.preventDefault();
@@ -81,7 +101,6 @@ function MultiFieldCrud() {
       setList(copyData);
       setEditId(null);
     }
-
     // setList((prev) => [...prev, data]);
     // formRef.current.reset()
     resetForm();
@@ -242,10 +261,8 @@ function MultiFieldCrud() {
           el.language.join().toLowerCase().includes(selectTerm.toLowerCase())
       )
     : list;
-
   // const filteredList = list
-  console.log("filteredList ==>",filteredList);
-  
+  // console.log("filteredList ==>", filteredList);
 
   return (
     <>
@@ -444,7 +461,7 @@ function MultiFieldCrud() {
             onChange={selectHandler}
             value={selectTerm}
           >
-            <option>Select City</option>
+            <option value="">Select City</option>
             <option value="Surat">Surat</option>
             <option value="Rajkot">Rajkot</option>
             <option value="Tapi">Tapi</option>
@@ -460,7 +477,7 @@ function MultiFieldCrud() {
             onChange={selectHandler}
             value={selectTerm}
           >
-            <option>Select Gender</option>
+            <option value="">Select Gender</option>
             <option value="Male">Male</option>
             <option value="Female">Female</option>
           </select>
@@ -475,7 +492,7 @@ function MultiFieldCrud() {
             onChange={selectHandler}
             value={selectTerm}
           >
-            <option>Select Language</option>
+            <option value="">Select Language</option>
             <option value="English">English</option>
             <option value="Hindi">Hindi</option>
             <option value="Gujrati">Gujrati</option>
